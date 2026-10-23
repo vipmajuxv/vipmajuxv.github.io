@@ -273,24 +273,56 @@
             // Y se enviaría a Google Drive mediante Apps Script.
         }
 
-        function confirmarYGenerar() {
-            // Detener cámara
-            if(video.srcObject) { video.srcObject.getTracks().forEach(track => track.stop()); }
-            
-            document.getElementById('step-2').style.display = 'none';
-            document.getElementById('step-3').style.display = 'block';
-            
-            // Generar Código QR Dinámico
-            document.getElementById('qr-container').innerHTML = ''; // limpiar
-            new QRCode(document.getElementById("qr-container"), {
-                text: "MAJU_XV_" + familyId + "_" + Date.now(),
-                width: 200,
-                height: 200,
-                colorDark : "#141414",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
+        // 1. Pega tu URL de Apps Script aquí:
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUzmj9QYaKjpYv930HJolLR8P5gG1-PjPNpaczPEZXcY31e7S3gKG9O0QDoSYud7Ri/exec';
+
+function confirmarYGenerar() {
+    // Apagar la cámara
+    if(video.srcObject) { video.srcObject.getTracks().forEach(track => track.stop()); }
+    
+    const qrCodeText = "MAJU_XV_" + familyId + "_" + Date.now();
+    let fotoBase64 = "";
+    
+    // Extraer la foto del canvas si se tomó una
+    if (canvas.style.display === 'block') {
+        fotoBase64 = canvas.toDataURL('image/jpeg', 0.5); // Comprimida al 50% para que suba rápido
+    }
+
+    // Mostrar mensaje de carga elegante
+    document.getElementById('step-2').innerHTML = '<h3 class="text-2xl text-[#A69889] text-center mt-10">Generando Pases VIP...<br><span class="text-sm text-gray-500">Por favor, espera unos segundos.</span></h3>';
+
+    // Empaquetar los datos para enviarlos a Google
+    const payload = {
+        familia: familyId,
+        qrCodeText: qrCodeText,
+        fotoBase64: fotoBase64
+    };
+
+    // Enviar datos silenciosamente a Google Apps Script
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' }, // Truco técnico para evitar bloqueos CORS
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Transición visual al éxito
+        document.getElementById('step-2').style.display = 'none';
+        document.getElementById('step-3').style.display = 'block';
+        
+        // Dibujar el Código QR final en pantalla
+        document.getElementById('qr-container').innerHTML = ''; 
+        new QRCode(document.getElementById("qr-container"), {
+            text: qrCodeText,
+            width: 200, height: 200,
+            colorDark : "#141414", colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    })
+    .catch(error => {
+        alert("Ocurrió un problema con la red, pero tu código es: " + qrCodeText + ". Toma captura de pantalla.");
+    });
+}
 
         function descargarQR() {
             // Lógica para descargar la imagen del div #qr-container al celular
