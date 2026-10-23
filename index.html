@@ -325,13 +325,30 @@ function confirmarYGenerar() {
 }
 
         function descargarQR() {
-            // Lógica para descargar la imagen del div #qr-container al celular
-            const qrImage = document.querySelector('#qr-container img').src;
-            const link = document.createElement('a');
-            link.href = qrImage;
-            link.download = 'Pase_VIP_Maju.png';
-            link.click();
-        }
+    const qrContainer = document.getElementById('qr-container');
+    let qrImageBase64 = "";
+
+    // Buscar si el QR se generó como imagen o como canvas
+    const imgElement = qrContainer.querySelector('img');
+    const canvasElement = qrContainer.querySelector('canvas');
+
+    if (imgElement && imgElement.src) {
+        qrImageBase64 = imgElement.src;
+    } else if (canvasElement) {
+        qrImageBase64 = canvasElement.toDataURL("image/png");
+    }
+
+    if (qrImageBase64) {
+        const link = document.createElement('a');
+        link.href = qrImageBase64;
+        link.download = 'Pase_VIP_Maju.png';
+        document.body.appendChild(link); // Requerido para funcionar en algunos celulares
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert("El código QR se está procesando, por favor intenta en un segundo.");
+    }
+}
     </script>
 </body>
 </html>
