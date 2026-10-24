@@ -254,35 +254,52 @@
             
             const file = input.files[0];
             const btn = document.getElementById('btn-subir-foto');
-            btn.innerText = "⏳ PROCESANDO...";
-
-            // Creamos un paquete de envío estándar (como lo hace Facebook o Instagram)
-            let formData = new FormData();
-            formData.append("action", "uploadPhoto");
-            formData.append("familia", familiaId);
-            formData.append("file", file);
-
-            btn.innerText = "⏳ ENVIANDO A DRIVE...";
+            btn.innerText = "⏳ PROCESANDO FOTO...";
             
-            // Enviamos el paquete
-            fetch(SCRIPT_URL, {
-                method: "POST",
-                body: formData // No le ponemos headers, fetch los ajusta solos
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    btn.innerText = "✅ FOTO PUBLICADA";
-                    cargarDatosInteractivos();
-                } else {
-                    btn.innerText = "❌ ERROR: " + data.error;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 800; 
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                    canvas.width = width; canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    const base64Compresa = canvas.toDataURL("image/jpeg", 0.6); 
+
+                    btn.innerText = "⏳ SUBIENDO AL ÁLBUM...";
+                    
+                    fetch(SCRIPT_URL, { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify({ 
+                            action: 'uploadPhoto', 
+                            familia: familiaId, 
+                            fotoBase64: base64Compresa 
+                        }) 
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            btn.innerText = "✅ FOTO PUBLICADA";
+                            cargarDatosInteractivos(); 
+                        } else {
+                            btn.innerText = "❌ ERROR: " + data.error;
+                        }
+                        setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
+                    }).catch(err => {
+                        btn.innerText = "❌ ERROR DE RED";
+                        setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
+                    });
                 }
-                setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
-            })
-            .catch(err => {
-                btn.innerText = "❌ ERROR DE CONEXIÓN";
-                setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
-            });
+            };
+            reader.readAsDataURL(file);
         }
 
         function confirmarYGenerar() {
