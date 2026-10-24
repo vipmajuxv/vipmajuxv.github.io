@@ -8,8 +8,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- html2canvas para la descarga del ticket -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Generador de QR (QRious) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    
+    <!-- EL NUEVO MOTOR FOTOGRÁFICO: html-to-image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -166,7 +169,6 @@
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
-        // 1. Pétalos
         function createPetals() {
             const container = document.getElementById('petals-container');
             const colors = ['#ffffff', '#fce4ec', '#f8bbd0']; 
@@ -185,7 +187,6 @@
         }
         createPetals();
 
-        // 2. Cuenta Regresiva
         const eventDate = new Date('Nov 7, 2026 19:30:00').getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -208,7 +209,6 @@
         const formatName = (str) => str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
         document.getElementById('hero-greeting').innerText = familiaId ? '¡Hola Familia ' + formatName(familiaId) + '!' : '¡Hola!';
 
-        // 3. Conectar y buscar invitados
         document.addEventListener("DOMContentLoaded", () => {
             if(!familiaId) {
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error: El enlace está incompleto.</p>';
@@ -250,7 +250,6 @@
             });
         });
 
-        // 4. Generar Tickets Múltiples usando API Externa para el QR
         function confirmarYGenerar() {
             let seleccionados = [];
             familyMembers.forEach((m, idx) => {
@@ -270,74 +269,54 @@
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`;
                 payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
                 
-                // USAMOS UNA API ESTÁNDAR PARA EL QR. Es una imagen 100% nativa.
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}&bgcolor=ffffff&color=4a4a4a`;
+                // Creamos el QR
+                const qr = new QRious({ value: qrText, size: 250, level: 'H', foreground: '#000000', background: '#ffffff' });
+                const qrBase64Image = qr.toDataURL(); 
                 const ticketID = `ticket-${m.rowId}`;
-                const imgID = `img-${m.rowId}`;
                 
+                // Estructura sólida del ticket para que html-to-image lo renderice perfecto
                 const ticketHTML = `
                 <div class="mb-8">
-                    <div id="${ticketID}" style="background-color: #F3EBDD;" class="rounded-xl overflow-hidden border border-[#D8C3A5] mx-auto max-w-[300px] mb-4 relative shadow-lg">
-                        <div class="bg-[#D8C3A5] py-4 text-center relative border-b-2 border-dashed border-[#F3EBDD]">
-                            <h4 class="font-script text-4xl text-white">VIP Pass</h4>
-                            <div class="absolute -bottom-3 -left-3 w-6 h-6 bg-[#F3EBDD] rounded-full border border-[#D8C3A5]"></div>
-                            <div class="absolute -bottom-3 -right-3 w-6 h-6 bg-[#F3EBDD] rounded-full border border-[#D8C3A5]"></div>
+                    <div id="${ticketID}" style="background-color: #F3EBDD; width: 300px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #D8C3A5; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative;">
+                        <div style="background-color: #D8C3A5; padding: 16px 0; text-align: center; border-bottom: 2px dashed #F3EBDD; position: relative;">
+                            <h4 class="font-script text-white" style="font-size: 36px; margin: 0; line-height: 1;">VIP Pass</h4>
                         </div>
-                        <div class="p-6 text-center">
-                            <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-1">Mis XV Años</p>
-                            <h1 class="font-script text-4xl text-[#A69889] leading-none mb-4">Maju</h1>
-                            <div class="py-3 mb-3 border-t border-b border-gray-300">
-                                <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Invitado Especial</p>
-                                <h5 class="text-lg font-semibold text-gray-800">${m.nombre}</h5>
+                        <div style="padding: 24px; text-align: center;">
+                            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p>
+                            <h1 class="font-script" style="font-size: 36px; color: #A69889; margin: 0 0 16px 0; line-height: 1;">Maju</h1>
+                            
+                            <div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;">
+                                <p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p>
+                                <h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5>
                             </div>
                             
-                            <!-- ESTRUCTURA BLINDADA Y API EXTERNA -->
-                            <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: inline-block; margin-bottom: 12px;">
-                                <img id="${imgID}" src="${qrImageUrl}" crossorigin="anonymous" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
+                            <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;">
+                                <img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
                             </div>
                             
-                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">07 NOV 2026 • 7:30 PM</p>
+                            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p>
                         </div>
                     </div>
-                    <button onclick="descargarTicket('${ticketID}', '${imgID}', this, '${m.nombre}')" class="w-full border-2 border-[#A69889] bg-white text-[#A69889] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#A69889] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button>
+                    <button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full mt-4 border-2 border-[#A69889] bg-white text-[#A69889] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#A69889] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button>
                 </div>`;
                 
                 container.insertAdjacentHTML('beforeend', ticketHTML);
             });
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones })
-            });
+            fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones }) });
         }
 
-        // 5. Descarga A Prueba de Fallos
-        function descargarTicket(ticketID, imgID, btnElement, nombre) {
+        // 5. Descarga con el NUEVO MOTOR html-to-image
+        function descargarTicket(ticketID, btnElement, nombre) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "⏳ GENERANDO PASE...";
-            
             const ticketDOM = document.getElementById(ticketID);
-            const imgElement = document.getElementById(imgID);
 
-            // Evitar el error de recorte haciendo scroll arriba
-            const scrollOriginal = window.scrollY;
-            window.scrollTo(0, 0);
-
-            // Función interna que ejecuta la captura cuando sabemos que la imagen existe
-            const hacerCaptura = () => {
-                html2canvas(ticketDOM, { 
-                    scale: 3, 
-                    backgroundColor: '#F3EBDD', 
-                    useCORS: true,
-                    scrollY: 0,
-                    x: 0,
-                    y: 0
-                }).then(canvas => {
-                    window.scrollTo(0, scrollOriginal); 
-                    
+            // htmlToImage es 100% nativo y dibuja la etiqueta <img> sin perderla
+            htmlToImage.toPng(ticketDOM, { pixelRatio: 3, backgroundColor: '#F3EBDD' })
+                .then(function (dataUrl) {
                     const link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png');
+                    link.href = dataUrl;
                     link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`;
                     document.body.appendChild(link);
                     link.click();
@@ -345,19 +324,12 @@
                     
                     btnElement.innerText = "✅ DESCARGADO";
                     setTimeout(() => { btnElement.innerText = originalText }, 3000);
-                }).catch(err => {
-                    window.scrollTo(0, scrollOriginal);
-                    alert("Hubo un problema. Por favor toma captura de pantalla del pase.");
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    alert("Hubo un error al generar la imagen. Por favor toma captura de pantalla.");
                     btnElement.innerText = originalText;
                 });
-            };
-
-            // Asegurarnos de que el QR se haya descargado de internet antes de tomar la foto
-            if(imgElement.complete) {
-                setTimeout(hacerCaptura, 200);
-            } else {
-                imgElement.onload = hacerCaptura;
-            }
         }
     </script>
 </body>
