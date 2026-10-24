@@ -57,7 +57,6 @@
         
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
             
-            <!-- Paso 1: Lista Dinámica de Miembros -->
             <div id="step-1">
                 <h3 id="familia-title" class="text-2xl md:text-3xl mb-2 font-script text-[#A69889]">Buscando tu invitación...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">Selecciona quiénes asistirán para emitir los pases VIP.</p>
@@ -69,13 +68,12 @@
                 <button id="btn-confirmar" onclick="confirmarYGenerar()" class="w-full bg-[#A69889] text-white py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8B7D6E] transition shadow-md hidden">Confirmar Asistencia</button>
             </div>
 
-            <!-- Paso 2: Generación de Tickets Múltiples -->
             <div id="step-2" class="hidden-step text-center">
                 <h3 class="text-3xl font-script text-amber-700 mb-2">¡Tus Pases están listos!</h3>
                 <p class="text-sm mb-8 text-gray-600">Descarga y presenta cada ticket en la puerta del evento.</p>
                 
                 <div id="tickets-container" class="space-y-12">
-                    <!-- Se llenarán los tickets aquí mediante JS -->
+                    <!-- Se llenarán los tickets aquí -->
                 </div>
             </div>
 
@@ -88,7 +86,6 @@
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
-        // 1. Efecto de Pétalos
         function createPetals() {
             const container = document.getElementById('petals-container');
             const colors = ['#ffffff', '#fce4ec', '#f8bbd0']; 
@@ -107,7 +104,6 @@
         }
         createPetals();
 
-        // 2. Cuenta Regresiva
         const eventDate = new Date('Nov 7, 2026 19:30:00').getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -121,18 +117,16 @@
         // -------------------------------------------------------------
         // ⚠️ PEGA AQUÍ LA URL DE TU APPS SCRIPT (NUEVA VERSIÓN)
         // -------------------------------------------------------------
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUzmj9QYaKjpYv930HJolLR8P5gG1-PjPNpaczPEZXcY31e7S3gKG9O0QDoSYud7Ri/exec';
+        const SCRIPT_URL = 'AQUI_PEGA_TU_URL';
         
         const urlParams = new URLSearchParams(window.location.search);
         const familiaId = urlParams.get('id') || '';
         let familyMembers = [];
 
-        // Capitalizar (Ej: YANQUI -> Yanqui)
         const formatName = (str) => str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
         
         document.getElementById('hero-greeting').innerText = familiaId ? '¡Hola Familia ' + formatName(familiaId) + '!' : '¡Hola!';
 
-        // 3. Obtener los miembros reales de Google Sheets
         document.addEventListener("DOMContentLoaded", () => {
             if(!familiaId) {
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error: El enlace está incompleto.</p>';
@@ -168,13 +162,11 @@
                     document.getElementById('familia-title').innerText = 'Lo sentimos';
                     document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-gray-600">No encontramos a tu familia en la base de datos.<br>Por favor contacta a Maju.</p>';
                 }
-            })
-            .catch(err => {
+            }).catch(err => {
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error de conexión. Intenta nuevamente.</p>';
             });
         });
 
-        // 4. Confirmar y generar Multi-Tickets
         function confirmarYGenerar() {
             let seleccionados = [];
             familyMembers.forEach((m, idx) => {
@@ -194,9 +186,8 @@
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`;
                 payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
 
-                // 1. Dibujar el ticket vacío (sin el QR aún)
                 const ticketID = `ticket-${m.rowId}`;
-                const qrImgID = `imgqr-${m.rowId}`;
+                const qrBoxID = `qr-box-${m.rowId}`;
                 
                 const ticketHTML = `
                 <div class="mb-8">
@@ -213,9 +204,8 @@
                                 <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Invitado Especial</p>
                                 <h5 class="text-lg font-semibold text-gray-800">${m.nombre}</h5>
                             </div>
-                            <div class="inline-block p-2 bg-white border border-[#D8C3A5] rounded-xl mb-3 shadow-sm">
-                                <!-- La imagen se cargará aquí abajo -->
-                                <img id="${qrImgID}" class="w-[120px] h-[120px] object-contain mx-auto" />
+                            <!-- Contenedor del QR con ancho y alto fijo para evitar deformaciones -->
+                            <div id="${qrBoxID}" class="inline-flex items-center justify-center p-2 bg-white border border-[#D8C3A5] rounded-xl mb-3 shadow-sm min-w-[136px] min-h-[136px]">
                             </div>
                             <p class="text-[10px] text-gray-500 uppercase tracking-widest">07 NOV 2026 • 7:30 PM</p>
                         </div>
@@ -225,14 +215,21 @@
                 
                 container.insertAdjacentHTML('beforeend', ticketHTML);
 
-                // 2. Generar el QR oculto, forzarlo a imagen, e inyectarlo (EVITA EL ERROR BLANCO)
-                let tempDiv = document.createElement('div');
-                new QRCode(tempDiv, { text: qrText, width: 120, height: 120, colorDark: "#4a4a4a", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
-                
+                // TRUCO TÉCNICO: Damos 100ms para que el HTML se dibuje, luego creamos el QR
                 setTimeout(() => {
-                    let canvas = tempDiv.querySelector('canvas');
-                    document.getElementById(qrImgID).src = canvas.toDataURL("image/png");
-                }, 200);
+                    const qrBox = document.getElementById(qrBoxID);
+                    new QRCode(qrBox, { text: qrText, width: 120, height: 120, colorDark: "#4a4a4a", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+                    
+                    // html2canvas odia la etiqueta <canvas>. La convertimos a imagen pura.
+                    setTimeout(() => {
+                        const canvas = qrBox.querySelector('canvas');
+                        if(canvas) {
+                            const imgBase64 = canvas.toDataURL("image/png");
+                            qrBox.innerHTML = `<img src="${imgBase64}" style="width:120px; height:120px; display:block; margin:auto;" />`;
+                        }
+                    }, 400); // 400ms asegurando que el canvas terminó de renderizarse
+                }, 100);
+
             });
 
             // Enviar a Google silenciosamente para confirmar la celda
@@ -243,10 +240,9 @@
             });
         }
 
-        // 5. Descarga perfecta asegurada
         function descargarTicket(ticketID, btnElement, nombre) {
             const originalText = btnElement.innerText;
-            btnElement.innerText = "⏳ PROCESANDO IMAGEN...";
+            btnElement.innerText = "⏳ PROCESANDO...";
             
             const ticketDOM = document.getElementById(ticketID);
 
@@ -258,6 +254,9 @@
                 
                 btnElement.innerText = "✅ DESCARGADO";
                 setTimeout(() => { btnElement.innerText = originalText }, 3000);
+            }).catch(err => {
+                alert("Hubo un problema. Por favor toma captura de pantalla del pase.");
+                btnElement.innerText = originalText;
             });
         }
     </script>
