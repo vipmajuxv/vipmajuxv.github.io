@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XV Maju Isabella</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- NUEVA LIBRERÍA QR: QRious (Generación instantánea y a prueba de fallos) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
@@ -41,7 +38,6 @@
         </div>
     </section>
 
-    <!-- CUENTA REGRESIVA Y DRESS CODE -->
     <section class="py-8 px-6 text-center">
         <h2 class="text-2xl italic mb-6 text-[#A69889]">Falta poco</h2>
         <div class="glass-panel p-6 rounded-2xl inline-block">
@@ -63,18 +59,15 @@
             <div id="step-1">
                 <h3 id="familia-title" class="text-2xl md:text-3xl mb-2 font-script text-[#A69889]">Buscando tu invitación...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">Selecciona quiénes asistirán para emitir los pases VIP.</p>
-                
                 <div id="lista-invitados" class="text-left mb-6 space-y-3">
                     <p class="text-center italic text-gray-500">Conectando con la base de datos...</p>
                 </div>
-                
                 <button id="btn-confirmar" onclick="confirmarYGenerar()" class="w-full bg-[#A69889] text-white py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8B7D6E] transition shadow-md hidden">Confirmar Asistencia</button>
             </div>
 
             <div id="step-2" class="hidden-step text-center">
                 <h3 class="text-3xl font-script text-amber-700 mb-2">¡Tus Pases están listos!</h3>
                 <p class="text-sm mb-8 text-gray-600">Descarga y presenta cada ticket en la puerta del evento.</p>
-                
                 <div id="tickets-container" class="space-y-12">
                     <!-- Se llenarán los tickets aquí -->
                 </div>
@@ -118,7 +111,7 @@
         }, 1000);
 
         // -------------------------------------------------------------
-        // ⚠️ PEGA AQUÍ LA URL DE TU APPS SCRIPT (NUEVA VERSIÓN)
+        // ⚠️ PEGA AQUÍ LA URL DE TU APPS SCRIPT
         // -------------------------------------------------------------
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUzmj9QYaKjpYv930HJolLR8P5gG1-PjPNpaczPEZXcY31e7S3gKG9O0QDoSYud7Ri/exec';
         
@@ -127,7 +120,6 @@
         let familyMembers = [];
 
         const formatName = (str) => str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
-        
         document.getElementById('hero-greeting').innerText = familiaId ? '¡Hola Familia ' + formatName(familiaId) + '!' : '¡Hola!';
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -135,12 +127,7 @@
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error: El enlace está incompleto.</p>';
                 return;
             }
-            
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify({ action: 'getFamily', familia: familiaId })
-            })
+            fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'getFamily', familia: familiaId }) })
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.miembros.length > 0) {
@@ -175,7 +162,6 @@
             familyMembers.forEach((m, idx) => {
                 if(document.getElementById(`chk-${idx}`).checked) seleccionados.push(m);
             });
-
             if(seleccionados.length === 0) return alert("Debes seleccionar al menos a un invitado.");
 
             document.getElementById('step-1').style.display = 'none';
@@ -189,21 +175,14 @@
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`;
                 payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
                 
-                // GENERAR CÓDIGO QR AL INSTANTE (Sin retrasos)
-                const qr = new QRious({
-                    value: qrText,
-                    size: 250,
-                    level: 'H',
-                    foreground: '#4a4a4a',
-                    background: 'white'
-                });
-                const qrBase64Image = qr.toDataURL(); // Imagen lista y procesada
-
+                const qr = new QRious({ value: qrText, size: 250, level: 'H', foreground: '#4a4a4a', background: 'white' });
+                const qrBase64Image = qr.toDataURL(); 
                 const ticketID = `ticket-${m.rowId}`;
                 
                 const ticketHTML = `
                 <div class="mb-8">
-                    <div id="${ticketID}" class="bg-[#F3EBDD] rounded-xl overflow-hidden border border-[#D8C3A5] mx-auto max-w-[300px] mb-4 relative shadow-lg">
+                    <!-- TICKET CON ID PARA CAPTURA -->
+                    <div id="${ticketID}" style="background-color: #F3EBDD;" class="rounded-xl overflow-hidden border border-[#D8C3A5] mx-auto max-w-[300px] mb-4 relative shadow-lg">
                         <div class="bg-[#D8C3A5] py-4 text-center relative border-b-2 border-dashed border-[#F3EBDD]">
                             <h4 class="font-script text-4xl text-white">VIP Pass</h4>
                             <div class="absolute -bottom-3 -left-3 w-6 h-6 bg-[#F3EBDD] rounded-full border border-[#D8C3A5]"></div>
@@ -217,9 +196,9 @@
                                 <h5 class="text-lg font-semibold text-gray-800">${m.nombre}</h5>
                             </div>
                             
-                            <!-- IMAGEN QR INSERTADA DIRECTAMENTE -->
-                            <div class="inline-flex items-center justify-center p-2 bg-white border border-[#D8C3A5] rounded-xl mb-3 shadow-sm min-w-[136px] min-h-[136px]">
-                                <img src="${qrBase64Image}" class="w-[120px] h-[120px] object-contain mx-auto" />
+                            <!-- ESTRUCTURA BLINDADA PARA EL QR -->
+                            <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: inline-block; margin-bottom: 12px;">
+                                <img src="${qrBase64Image}" width="120" height="120" style="display: block; width: 120px; height: 120px; margin: 0 auto;" crossorigin="anonymous" />
                             </div>
                             
                             <p class="text-[10px] text-gray-500 uppercase tracking-widest">07 NOV 2026 • 7:30 PM</p>
@@ -231,23 +210,23 @@
                 container.insertAdjacentHTML('beforeend', ticketHTML);
             });
 
-            // Enviar a Google silenciosamente
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones })
-            });
+            fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones }) });
         }
 
         function descargarTicket(ticketID, btnElement, nombre) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "⏳ PROCESANDO...";
-            
             const ticketDOM = document.getElementById(ticketID);
 
-            // Un ligero retraso para permitir que el botón cambie visualmente a "PROCESANDO..." antes de trabajar
             setTimeout(() => {
-                html2canvas(ticketDOM, { scale: 3, backgroundColor: null, useCORS: true }).then(canvas => {
+                // PARÁMETROS FORZADOS PARA PREVENIR ERRORES EN MOVILES
+                html2canvas(ticketDOM, { 
+                    scale: 3, 
+                    backgroundColor: '#F3EBDD', 
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: false
+                }).then(canvas => {
                     const link = document.createElement('a');
                     link.href = canvas.toDataURL('image/png');
                     link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`;
