@@ -5,49 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XV Maju Isabella</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Generador de QR (QRious) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    
-    <!-- Motor fotográfico: html-to-image -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Cormorant Garamond', serif; background-color: #F3EBDD; color: #141414; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
-        
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        }
-
+        .glass-panel { background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
         .petal { position: fixed; top: -10%; z-index: -1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { 0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; } }
-
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .bg-ivory { background-color: #F3EBDD; border: 1px solid #ccc; }
-        .bg-sand { background-color: #D8C3A5; }
-        .bg-champagne { background-color: #E6D3B3; }
-        .bg-taupe { background-color: #A69889; }
-        .bg-silver { background-color: #C5C7CB; }
-        .bg-black-teen { background-color: #141414; }
-
+        .bg-ivory { background-color: #F3EBDD; border: 1px solid #ccc; } .bg-sand { background-color: #D8C3A5; } .bg-champagne { background-color: #E6D3B3; } .bg-taupe { background-color: #A69889; } .bg-silver { background-color: #C5C7CB; } .bg-black-teen { background-color: #141414; }
         .hidden-step { display: none; }
+        
+        /* Scrollbar elegante para el carrusel y playlist */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #D8C3A5; border-radius: 4px; }
     </style>
 </head>
 <body class="relative">
 
-    <!-- Flores cayendo -->
     <div id="petals-container" class="fixed inset-0 pointer-events-none"></div>
 
-    <!-- SECCIÓN 1: PORTADA HERO -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10">
         <div class="glass-panel p-8 md:p-10 rounded-3xl max-w-md w-full mt-4">
             <p id="hero-greeting" class="text-2xl md:text-3xl italic text-[#A69889] mb-4">¡Hola!</p>
@@ -71,7 +53,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: CUENTA REGRESIVA -->
     <section class="py-8 px-6 text-center">
         <h2 class="text-2xl italic mb-6 text-[#A69889]">Falta poco</h2>
         <div class="glass-panel p-6 rounded-2xl inline-block">
@@ -84,7 +65,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: UBICACIÓN -->
     <section class="py-10 px-6 text-center">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Dónde</p>
         <h2 class="text-3xl md:text-4xl font-semibold mb-3 text-[#A69889]">Urb. Santa Sofía B-8</h2>
@@ -94,12 +74,10 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: DRESS CODE -->
     <section id="vestimenta" class="py-16 px-6 text-center bg-white/20">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Dress code</p>
         <h2 class="text-4xl font-semibold mb-6 text-[#A69889]">Cocktail</h2>
         <p class="max-w-md mx-auto mb-10 italic text-gray-600">Estos son los tonos elegidos para la noche. Elige el que más te guste.</p>
-        
         <div class="flex flex-wrap justify-center gap-4 md:gap-6 max-w-2xl mx-auto mb-8">
             <div class="text-center"><span class="color-circle bg-white"></span><p class="text-xs">Blanco</p></div>
             <div class="text-center"><span class="color-circle bg-ivory"></span><p class="text-xs">Marfil</p></div>
@@ -109,93 +87,75 @@
             <div class="text-center"><span class="color-circle bg-silver"></span><p class="text-xs">Plateado</p></div>
         </div>
         <div class="text-center mt-6">
-            <span class="color-circle bg-black-teen"></span>
-            <p class="text-xs font-bold text-gray-800">Negro (Solo adolescentes)</p>
+            <span class="color-circle bg-black-teen"></span><p class="text-xs font-bold text-gray-800">Negro (Solo adolescentes)</p>
         </div>
         <p class="mt-8 text-sm max-w-md mx-auto text-gray-600">Colores enteros, sin estampados ni brillos.<br>Sin glitter ni lentejuelas.</p>
     </section>
 
-    <!-- SECCIÓN 5: REGISTRO Y RSVP -->
     <section id="rsvp" class="py-20 px-6 text-center">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Registro</p>
         <h2 class="text-4xl font-semibold mb-6 text-[#A69889]">Confirma tu asistencia</h2>
-        
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
-            
             <div id="step-1">
                 <h3 id="familia-title" class="text-2xl md:text-3xl mb-2 font-script text-[#A69889]">Buscando tu invitación...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">Selecciona quiénes asistirán para emitir los pases VIP.</p>
-                
                 <div id="lista-invitados" class="text-left mb-6 space-y-3">
                     <p class="text-center italic text-gray-500">Conectando con la base de datos...</p>
                 </div>
-                
                 <button id="btn-confirmar" onclick="confirmarYGenerar()" class="w-full bg-[#A69889] text-white py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8B7D6E] transition shadow-md hidden">Confirmar Asistencia</button>
             </div>
-
             <div id="step-2" class="hidden-step text-center">
                 <h3 class="text-3xl font-script text-amber-700 mb-2">¡Tus Pases están listos!</h3>
                 <p class="text-sm mb-8 text-gray-600">Descarga y presenta cada ticket en la puerta del evento.</p>
-                
-                <div id="tickets-container" class="space-y-12">
-                    <!-- Se llenarán los tickets aquí -->
-                </div>
+                <div id="tickets-container" class="space-y-12"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 6: INTERACCIÓN (MÚSICA Y FOTOS) -->
+    <section class="py-16 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
+        
+        <!-- PLAYLIST -->
+        <div class="glass-panel p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
+            <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Playlist</p>
+            <h2 class="text-4xl mb-4 font-script text-[#A69889]">La música</h2>
+            
+            <div id="playlist-container" class="flex-1 overflow-y-auto mb-6 text-left space-y-3 pr-2 custom-scrollbar">
+                <p class="text-center italic text-gray-500 text-sm mt-10">Cargando canciones...</p>
             </div>
 
-        </div>
-    </section>
-
-    <!-- SECCIÓN 6: PLAYLIST Y FOTOS -->
-    <section class="py-16 px-6 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-        <div class="glass-panel p-8 rounded-3xl text-center">
-            <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Playlist</p>
-            <h2 class="text-3xl mb-4 font-semibold text-[#A69889]">La música</h2>
-            <p class="text-sm mb-6 text-gray-600">¿Qué canción no puede faltar para bailar?</p>
-            <input type="text" placeholder="Nombre de la canción" class="w-full p-3 rounded-lg border border-[#D8C3A5] mb-4 bg-white/60 focus:outline-none">
-            <button class="w-full bg-[#A69889] text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#8B7D6E] transition">Pedir Canción</button>
+            <div class="mt-auto">
+                <input type="text" id="input-cancion" placeholder="Nombre de la canción o artista" class="w-full p-3 rounded-lg border border-[#D8C3A5] mb-3 bg-white/60 focus:outline-none text-sm">
+                <button id="btn-pedir-cancion" onclick="pedirCancion()" class="w-full bg-[#A69889] text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#8B7D6E] transition">🎵 Pedir Canción</button>
+            </div>
         </div>
 
-        <div class="glass-panel p-8 rounded-3xl text-center">
+        <!-- ÁLBUM (CARRUSEL) -->
+        <div class="glass-panel p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
             <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Álbum colaborativo</p>
-            <h2 class="text-3xl mb-4 font-semibold text-[#A69889]">Comparte tus fotos</h2>
-            <p class="text-sm mb-6 text-gray-600">Sube las fotos que tomes durante la fiesta para verlas en vivo.</p>
-            <a href="#" class="inline-block w-full border border-[#A69889] text-[#A69889] py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#A69889] hover:text-white transition">Abrir Álbum</a>
+            <h2 class="text-4xl mb-4 font-script text-[#A69889]">Galería de Fotos</h2>
+            
+            <!-- Contenedor del carrusel con snap -->
+            <div id="gallery-carousel" class="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-4 mb-6 pb-2 items-center custom-scrollbar" style="scroll-behavior: smooth;">
+                <p class="text-center italic text-gray-500 text-sm w-full">Cargando galería...</p>
+            </div>
+
+            <div class="mt-auto shrink-0">
+                <input type="file" id="input-foto" accept="image/*" class="hidden" onchange="subirFoto(this)">
+                <button id="btn-subir-foto" onclick="document.getElementById('input-foto').click()" class="w-full border-2 border-[#A69889] text-[#A69889] py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#A69889] hover:text-white transition">📸 Subir Foto al Álbum</button>
+            </div>
         </div>
     </section>
 
-    <footer class="text-center py-8 text-[11px] uppercase tracking-widest text-gray-500 bg-white/30">
+    <footer class="text-center py-8 mt-10 text-[11px] uppercase tracking-widest text-gray-500 bg-white/30">
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
-        function createPetals() {
-            const container = document.getElementById('petals-container');
-            const colors = ['#ffffff', '#fce4ec', '#f8bbd0']; 
-            for (let i = 0; i < 15; i++) {
-                let p = document.createElement('div');
-                p.className = 'petal';
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.width = (Math.random() * 10 + 10) + 'px';
-                p.style.height = (Math.random() * 10 + 10) + 'px';
-                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                p.style.borderRadius = '50% 0 50% 50%';
-                p.style.animationDuration = (Math.random() * 5 + 6) + 's';
-                p.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(p);
-            }
-        }
-        createPetals();
-
-        const eventDate = new Date('Nov 7, 2026 19:30:00').getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById('mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        }, 1000);
+        // Animaciones y timers (oculto para brevedad visual, está igual)
+        function createPetals() { const container = document.getElementById('petals-container'); const colors = ['#ffffff', '#fce4ec', '#f8bbd0']; for (let i = 0; i < 15; i++) { let p = document.createElement('div'); p.className = 'petal'; p.style.left = Math.random() * 100 + 'vw'; p.style.width = (Math.random() * 10 + 10) + 'px'; p.style.height = (Math.random() * 10 + 10) + 'px'; p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; p.style.borderRadius = '50% 0 50% 50%'; p.style.animationDuration = (Math.random() * 5 + 6) + 's'; p.style.animationDelay = Math.random() * 5 + 's'; container.appendChild(p); } } createPetals();
+        const eventDate = new Date('Nov 7, 2026 19:30:00').getTime(); setInterval(() => { const now = new Date().getTime(); const distance = eventDate - now; document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'); document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'); document.getElementById('mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'); document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); }, 1000);
 
         // -------------------------------------------------------------
         // ⚠️ PEGA AQUÍ LA URL DE TU APPS SCRIPT
@@ -209,17 +169,15 @@
         const formatName = (str) => str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
         document.getElementById('hero-greeting').innerText = familiaId ? '¡Hola Familia ' + formatName(familiaId) + '!' : '¡Hola!';
 
+        // CARGAR BASE DE DATOS PRINCIPAL Y COMPONENTES SOCIALES
         document.addEventListener("DOMContentLoaded", () => {
+            cargarDatosInteractivos(); // Cargar Música y Fotos al abrir la web
+
             if(!familiaId) {
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error: El enlace está incompleto.</p>';
                 return;
             }
-            
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify({ action: 'getFamily', familia: familiaId })
-            })
+            fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'getFamily', familia: familiaId }) })
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.miembros.length > 0) {
@@ -242,40 +200,129 @@
                     document.getElementById('lista-invitados').innerHTML = html;
                 } else {
                     document.getElementById('familia-title').innerText = 'Lo sentimos';
-                    document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-gray-600">No encontramos a tu familia en la base de datos.<br>Por favor contacta a Maju.</p>';
+                    document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-gray-600">No encontramos a tu familia en la base de datos.</p>';
                 }
-            })
-            .catch(err => {
-                document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error de conexión. Intenta nuevamente.</p>';
-            });
+            }).catch(err => document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error de conexión.</p>');
         });
 
-        function confirmarYGenerar() {
-            let seleccionados = [];
-            familyMembers.forEach((m, idx) => {
-                if(document.getElementById(`chk-${idx}`).checked) seleccionados.push(m);
+        // 1. OBTENER CANCIONES Y FOTOS
+        function cargarDatosInteractivos() {
+            // Cargar Música
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPlaylist' }) })
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('playlist-container');
+                if (data.songs && data.songs.length > 0) {
+                    container.innerHTML = data.songs.map(s => `
+                        <div class="bg-white/40 p-3 rounded-xl border border-[#D8C3A5]/50 flex items-center justify-between shadow-sm">
+                            <div class="w-full">
+                                <p class="text-sm font-semibold text-gray-800 break-words">${s.cancion}</p>
+                                <p class="text-[10px] uppercase tracking-widest text-[#A69889] mt-1">Pedida por: Fam. ${formatName(s.familia)}</p>
+                            </div>
+                            <span class="text-xl">🎵</span>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<p class="text-center italic text-gray-500 text-sm mt-10">Aún no hay canciones.<br>¡Sé el primero en pedir una!</p>';
+                }
             });
 
-            if(seleccionados.length === 0) return alert("Debes seleccionar al menos a un invitado.");
+            // Cargar Galería
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPhotos' }) })
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('gallery-carousel');
+                if (data.photos && data.photos.length > 0) {
+                    container.innerHTML = data.photos.map(p => `
+                        <div class="snap-center shrink-0 w-64 h-[280px] bg-white p-2 rounded-2xl shadow-sm border border-[#D8C3A5] flex flex-col">
+                            <img src="${p.url}" class="w-full h-full object-cover rounded-xl bg-gray-100" loading="lazy">
+                            <p class="text-[10px] uppercase tracking-widest text-center mt-2 text-gray-500 font-semibold truncate">Cámara: Fam. ${formatName(p.familia)}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<p class="text-center italic text-gray-500 text-sm w-full">Aún no hay fotos.<br>¡Sube la primera!</p>';
+                }
+            });
+        }
 
-            document.getElementById('step-1').style.display = 'none';
-            document.getElementById('step-2').style.display = 'block';
+        // 2. ENVIAR CANCIÓN
+        function pedirCancion() {
+            const cancion = document.getElementById('input-cancion').value;
+            const btn = document.getElementById('btn-pedir-cancion');
+            if(!cancion) return alert("Escribe el nombre de una canción");
+            if(!familiaId) return alert("Debes acceder con tu enlace de invitación para pedir canciones.");
+
+            btn.innerText = "⏳ ENVIANDO...";
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'addSong', familia: familiaId, cancion: cancion }) })
+            .then(() => {
+                document.getElementById('input-cancion').value = '';
+                btn.innerText = "✅ AÑADIDA A LA LISTA";
+                cargarDatosInteractivos(); // Recargar el muro para que se vea
+                setTimeout(() => { btn.innerText = "🎵 Pedir Canción" }, 3000);
+            });
+        }
+
+        // 3. COMPRIMIR Y SUBIR FOTO
+        function subirFoto(input) {
+            if(!input.files || input.files.length === 0) return;
+            if(!familiaId) return alert("Debes acceder con tu enlace de invitación para subir fotos.");
             
-            let container = document.getElementById('tickets-container');
-            container.innerHTML = '';
+            const file = input.files[0];
+            const btn = document.getElementById('btn-subir-foto');
+            btn.innerText = "⏳ PROCESANDO FOTO...";
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Comprimir la imagen antes de subir para no saturar el Drive
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 800; // Calidad óptima para móvil
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                    canvas.width = width; canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    const base64Compresa = canvas.toDataURL("image/jpeg", 0.6); // 60% calidad
+
+                    btn.innerText = "⏳ SUBIENDO AL ÁLBUM...";
+                    fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'uploadPhoto', familia: familiaId, fotoBase64: base64Compresa }) })
+                    .then(res => res.json())
+                    .then(data => {
+                        btn.innerText = "✅ FOTO PUBLICADA";
+                        cargarDatosInteractivos(); // Recargar el carrusel para que aparezca la foto nueva
+                        setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
+                    }).catch(err => {
+                        btn.innerText = "❌ ERROR DE RED";
+                        setTimeout(() => { btn.innerText = "📸 Subir Foto al Álbum" }, 3000);
+                    });
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // CÓDIGO DE TICKETS Y DESCARGA (Intacto)
+        function confirmarYGenerar() {
+            let seleccionados = [];
+            familyMembers.forEach((m, idx) => { if(document.getElementById(`chk-${idx}`).checked) seleccionados.push(m); });
+            if(seleccionados.length === 0) return alert("Debes seleccionar al menos a un invitado.");
+            document.getElementById('step-1').style.display = 'none'; document.getElementById('step-2').style.display = 'block';
+            let container = document.getElementById('tickets-container'); container.innerHTML = '';
             let payloadConfirmaciones = [];
 
             seleccionados.forEach((m) => {
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`;
                 payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
-                
                 const qr = new QRious({ value: qrText, size: 250, level: 'H', foreground: '#000000', background: '#ffffff' });
                 const qrBase64Image = qr.toDataURL(); 
                 const ticketID = `ticket-${m.rowId}`;
                 
                 const ticketHTML = `
                 <div class="mb-8">
-                    <!-- ENVOLTURA FLEX PARA CENTRAR (Soluciona el recorte offset) -->
                     <div class="flex justify-center mb-4">
                         <div id="${ticketID}" style="background-color: #F3EBDD; width: 300px; border-radius: 12px; overflow: hidden; border: 1px solid #D8C3A5; position: relative;">
                             <div style="background-color: #D8C3A5; padding: 16px 0; text-align: center; border-bottom: 2px dashed #F3EBDD; position: relative;">
@@ -286,57 +333,33 @@
                             <div style="padding: 24px; text-align: center;">
                                 <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p>
                                 <h1 class="font-script" style="font-size: 36px; color: #A69889; margin: 0 0 16px 0; line-height: 1;">Maju</h1>
-                                
                                 <div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;">
                                     <p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p>
                                     <h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5>
                                 </div>
-                                
                                 <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;">
                                     <img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
                                 </div>
-                                
                                 <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p>
                             </div>
                         </div>
                     </div>
                     <button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full border-2 border-[#A69889] bg-white text-[#A69889] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#A69889] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button>
                 </div>`;
-                
                 container.insertAdjacentHTML('beforeend', ticketHTML);
             });
-
             fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones }) });
         }
 
-        // 5. Descarga con el NUEVO MOTOR html-to-image
         function descargarTicket(ticketID, btnElement, nombre) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "⏳ GENERANDO PASE...";
-            const ticketDOM = document.getElementById(ticketID);
-
-            // Forzamos estilo de margen cero durante la captura para evitar recortes
-            htmlToImage.toPng(ticketDOM, { 
-                pixelRatio: 3, 
-                backgroundColor: '#F3EBDD',
-                style: { margin: '0' }
-            })
+            htmlToImage.toPng(document.getElementById(ticketID), { pixelRatio: 3, backgroundColor: '#F3EBDD', style: { margin: '0' } })
             .then(function (dataUrl) {
-                const link = document.createElement('a');
-                link.href = dataUrl;
-                link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                btnElement.innerText = "✅ DESCARGADO";
-                setTimeout(() => { btnElement.innerText = originalText }, 3000);
+                const link = document.createElement('a'); link.href = dataUrl; link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`; document.body.appendChild(link); link.click(); document.body.removeChild(link);
+                btnElement.innerText = "✅ DESCARGADO"; setTimeout(() => { btnElement.innerText = originalText }, 3000);
             })
-            .catch(function (error) {
-                console.error('Error:', error);
-                alert("Hubo un error al generar la imagen. Por favor toma captura de pantalla.");
-                btnElement.innerText = originalText;
-            });
+            .catch(function (error) { alert("Error. Toma captura de pantalla."); btnElement.innerText = originalText; });
         }
     </script>
 </body>
