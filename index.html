@@ -11,7 +11,7 @@
     <!-- Generador de QR (QRious) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     
-    <!-- EL NUEVO MOTOR FOTOGRÁFICO: html-to-image -->
+    <!-- Motor fotográfico: html-to-image -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 
     <!-- Google Fonts -->
@@ -145,7 +145,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 6: PLAYLIST Y FOTOS RESTAURADAS -->
+    <!-- SECCIÓN 6: PLAYLIST Y FOTOS -->
     <section class="py-16 px-6 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
         <div class="glass-panel p-8 rounded-3xl text-center">
             <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Playlist</p>
@@ -269,35 +269,38 @@
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`;
                 payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
                 
-                // Creamos el QR
                 const qr = new QRious({ value: qrText, size: 250, level: 'H', foreground: '#000000', background: '#ffffff' });
                 const qrBase64Image = qr.toDataURL(); 
                 const ticketID = `ticket-${m.rowId}`;
                 
-                // Estructura sólida del ticket para que html-to-image lo renderice perfecto
                 const ticketHTML = `
                 <div class="mb-8">
-                    <div id="${ticketID}" style="background-color: #F3EBDD; width: 300px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #D8C3A5; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative;">
-                        <div style="background-color: #D8C3A5; padding: 16px 0; text-align: center; border-bottom: 2px dashed #F3EBDD; position: relative;">
-                            <h4 class="font-script text-white" style="font-size: 36px; margin: 0; line-height: 1;">VIP Pass</h4>
-                        </div>
-                        <div style="padding: 24px; text-align: center;">
-                            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p>
-                            <h1 class="font-script" style="font-size: 36px; color: #A69889; margin: 0 0 16px 0; line-height: 1;">Maju</h1>
-                            
-                            <div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;">
-                                <p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p>
-                                <h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5>
+                    <!-- ENVOLTURA FLEX PARA CENTRAR (Soluciona el recorte offset) -->
+                    <div class="flex justify-center mb-4">
+                        <div id="${ticketID}" style="background-color: #F3EBDD; width: 300px; border-radius: 12px; overflow: hidden; border: 1px solid #D8C3A5; position: relative;">
+                            <div style="background-color: #D8C3A5; padding: 16px 0; text-align: center; border-bottom: 2px dashed #F3EBDD; position: relative;">
+                                <h4 class="font-script text-white" style="font-size: 36px; margin: 0; line-height: 1;">VIP Pass</h4>
+                                <div class="absolute -bottom-3 -left-3 w-6 h-6 bg-[#F3EBDD] rounded-full border border-[#D8C3A5]"></div>
+                                <div class="absolute -bottom-3 -right-3 w-6 h-6 bg-[#F3EBDD] rounded-full border border-[#D8C3A5]"></div>
                             </div>
-                            
-                            <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;">
-                                <img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
+                            <div style="padding: 24px; text-align: center;">
+                                <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p>
+                                <h1 class="font-script" style="font-size: 36px; color: #A69889; margin: 0 0 16px 0; line-height: 1;">Maju</h1>
+                                
+                                <div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;">
+                                    <p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p>
+                                    <h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5>
+                                </div>
+                                
+                                <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;">
+                                    <img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
+                                </div>
+                                
+                                <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p>
                             </div>
-                            
-                            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p>
                         </div>
                     </div>
-                    <button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full mt-4 border-2 border-[#A69889] bg-white text-[#A69889] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#A69889] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button>
+                    <button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full border-2 border-[#A69889] bg-white text-[#A69889] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#A69889] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button>
                 </div>`;
                 
                 container.insertAdjacentHTML('beforeend', ticketHTML);
@@ -312,24 +315,28 @@
             btnElement.innerText = "⏳ GENERANDO PASE...";
             const ticketDOM = document.getElementById(ticketID);
 
-            // htmlToImage es 100% nativo y dibuja la etiqueta <img> sin perderla
-            htmlToImage.toPng(ticketDOM, { pixelRatio: 3, backgroundColor: '#F3EBDD' })
-                .then(function (dataUrl) {
-                    const link = document.createElement('a');
-                    link.href = dataUrl;
-                    link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    btnElement.innerText = "✅ DESCARGADO";
-                    setTimeout(() => { btnElement.innerText = originalText }, 3000);
-                })
-                .catch(function (error) {
-                    console.error('Error:', error);
-                    alert("Hubo un error al generar la imagen. Por favor toma captura de pantalla.");
-                    btnElement.innerText = originalText;
-                });
+            // Forzamos estilo de margen cero durante la captura para evitar recortes
+            htmlToImage.toPng(ticketDOM, { 
+                pixelRatio: 3, 
+                backgroundColor: '#F3EBDD',
+                style: { margin: '0' }
+            })
+            .then(function (dataUrl) {
+                const link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = `Pase_VIP_${nombre.replace(/\s/g, '_')}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                btnElement.innerText = "✅ DESCARGADO";
+                setTimeout(() => { btnElement.innerText = originalText }, 3000);
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                alert("Hubo un error al generar la imagen. Por favor toma captura de pantalla.");
+                btnElement.innerText = originalText;
+            });
         }
     </script>
 </body>
