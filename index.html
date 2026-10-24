@@ -15,28 +15,35 @@
         .font-script { font-family: 'Great Vibes', cursive; }
         
         .glass-panel {
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .glass-panel-dark {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .petal { position: fixed; top: -10%; z-index: -1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { 0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; } }
 
-        .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .bg-blanco { background-color: #FFFFFF; border: 1px solid #ccc; }
-        .bg-rosa { background-color: #F68B9E; } /* Tickled Pink */
-        .bg-naranja { background-color: #FF8A3D; } /* PMS 2025 C */
-        .bg-amarillo { background-color: #F6D04D; } /* Sunstruck */
-        .bg-verde { background-color: #8CA38D; } /* Verde Salvia */
-        .bg-black-teen { background-color: #141414; }
+        .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
+        .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
+        .bg-champagne { background-color: #E6D3B3; border: 1px solid #d1d5db; }
+        .bg-taupe { background-color: #A69889; border: 1px solid #9ca3af; }
+        .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
+        .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
         .hidden-step { display: none; }
         
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #8CA38D; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 4px; }
 
         .ribbon {
             position: absolute;
@@ -71,7 +78,8 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none"></div>
 
-    <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10">
+    <!-- SECCIÓN 1: INICIO (FONDO CREMA) -->
+    <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10 bg-[#FDFBF7]">
         <div class="glass-panel p-8 md:p-10 rounded-3xl max-w-md w-full mt-4 relative overflow-hidden">
             
             <div class="ribbon ribbon-top-left">Mis XV</div>
@@ -92,50 +100,56 @@
         </div>
     </section>
 
-    <section class="py-8 px-6 text-center">
-        <h2 class="text-2xl italic mb-6 text-[#8CA38D]">Falta poco</h2>
-        <div class="glass-panel p-6 rounded-2xl inline-block">
-            <div class="flex gap-4 md:gap-8 justify-center text-center">
-                <div><span id="days" class="text-4xl md:text-5xl block text-[#E26D5A]">00</span><span class="text-[10px] uppercase tracking-widest">días</span></div>
-                <div><span id="hours" class="text-4xl md:text-5xl block text-[#E26D5A]">00</span><span class="text-[10px] uppercase tracking-widest">horas</span></div>
-                <div><span id="mins" class="text-4xl md:text-5xl block text-[#E26D5A]">00</span><span class="text-[10px] uppercase tracking-widest">minutos</span></div>
-                <div><span id="secs" class="text-4xl md:text-5xl block text-[#E26D5A]">00</span><span class="text-[10px] uppercase tracking-widest">segundos</span></div>
+    <!-- SECCIÓN 2: CUENTA REGRESIVA (FONDO VERDE SALVIA) -->
+    <section class="py-12 px-6 text-center bg-[#8CA38D]">
+        <h2 class="text-3xl italic mb-6 text-white font-script">Falta poco</h2>
+        <div class="glass-panel-dark p-6 rounded-2xl inline-block">
+            <div class="flex gap-4 md:gap-8 justify-center text-center text-white">
+                <div><span id="days" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[10px] uppercase tracking-widest text-white/80">días</span></div>
+                <div><span id="hours" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[10px] uppercase tracking-widest text-white/80">horas</span></div>
+                <div><span id="mins" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[10px] uppercase tracking-widest text-white/80">minutos</span></div>
+                <div><span id="secs" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[10px] uppercase tracking-widest text-white/80">segundos</span></div>
             </div>
         </div>
     </section>
 
-    <section class="py-10 px-6 text-center">
+    <!-- SECCIÓN 3: UBICACIÓN (FONDO CREMA) -->
+    <section class="py-16 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Dónde</p>
         <h2 class="text-3xl md:text-4xl font-semibold mb-3 text-[#8CA38D]">Urb. Santa Sofía B-8</h2>
         <p class="max-w-md mx-auto mb-6 text-gray-700 text-sm">Challapampa, Cerro Colorado, Arequipa<br>7:30 p.m.</p>
         <div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Urb.+Santa+Sofia+B-8,+Challapampa,+Cerro+Colorado,+Arequipa" target="_blank" class="inline-block px-8 py-3 glass-panel rounded-full uppercase tracking-widest text-xs hover:bg-white/50 text-[#2E3B32] transition font-semibold">Ver ubicación</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Urb.+Santa+Sofia+B-8,+Challapampa,+Cerro+Colorado,+Arequipa" target="_blank" class="inline-block px-8 py-3 bg-[#E26D5A] text-white rounded-full uppercase tracking-widest text-xs hover:bg-[#C95B4A] transition shadow-md font-semibold">Ver ubicación</a>
         </div>
     </section>
 
-    <section id="vestimenta" class="py-16 px-6 text-center bg-white/30">
-        <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Dress code</p>
-        <h2 class="text-4xl font-semibold mb-6 text-[#8CA38D]">Cocktail</h2>
-        <p class="max-w-md mx-auto mb-10 italic text-gray-600">Estos son los tonos elegidos para la noche. Elige el que más te guste.</p>
+    <!-- SECCIÓN 4: DRESS CODE (FONDO CORAL) -->
+    <section id="vestimenta" class="py-16 px-6 text-center bg-[#F47E7A] text-white">
+        <p class="uppercase tracking-widest text-[10px] text-white/80 mb-2">Dress code</p>
+        <h2 class="text-4xl font-semibold mb-6 text-white">Cocktail</h2>
+        <p class="max-w-md mx-auto mb-10 italic text-white/90">Estos son los tonos elegidos para la noche. Elige el que más te guste.</p>
+        
         <div class="flex flex-wrap justify-center gap-4 md:gap-6 max-w-2xl mx-auto mb-8">
-            <div class="text-center"><span class="color-circle bg-blanco"></span><p class="text-xs">Blanco</p></div>
-            <div class="text-center"><span class="color-circle bg-rosa"></span><p class="text-xs">Rosa</p></div>
-            <div class="text-center"><span class="color-circle bg-naranja"></span><p class="text-xs">Naranja</p></div>
-            <div class="text-center"><span class="color-circle bg-amarillo"></span><p class="text-xs">Amarillo</p></div>
-            <div class="text-center"><span class="color-circle bg-verde"></span><p class="text-xs">Verde Salvia</p></div>
+            <div class="text-center"><span class="color-circle bg-white" style="border: 1px solid #ccc;"></span><p class="text-xs text-white">Blanco</p></div>
+            <div class="text-center"><span class="color-circle bg-ivory"></span><p class="text-xs text-white">Marfil</p></div>
+            <div class="text-center"><span class="color-circle bg-sand"></span><p class="text-xs text-white">Beige arena</p></div>
+            <div class="text-center"><span class="color-circle bg-champagne"></span><p class="text-xs text-white">Champán</p></div>
+            <div class="text-center"><span class="color-circle bg-taupe"></span><p class="text-xs text-white">Taupe</p></div>
+            <div class="text-center"><span class="color-circle bg-silver"></span><p class="text-xs text-white">Plateado</p></div>
         </div>
         <div class="text-center mt-6">
-            <span class="color-circle bg-black-teen"></span><p class="text-xs font-bold text-gray-800">Negro (Solo adolescentes)</p>
+            <span class="color-circle bg-black-teen border-2 border-white/50"></span><p class="text-xs font-bold text-white mt-1">Negro (Solo adolescentes)</p>
         </div>
-        <p class="mt-8 text-sm max-w-md mx-auto text-gray-600">Colores enteros, sin estampados ni brillos.<br>Sin glitter ni lentejuelas.</p>
+        <p class="mt-8 text-sm max-w-md mx-auto text-white/90 border-t border-white/20 pt-6">Colores enteros, sin estampados ni brillos.<br>Sin glitter ni lentejuelas.</p>
     </section>
 
-    <section id="rsvp" class="py-20 px-6 text-center">
+    <!-- SECCIÓN 5: REGISTRO RSVP (FONDO CREMA) -->
+    <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Registro</p>
         <h2 class="text-4xl font-semibold mb-6 text-[#8CA38D]">Confirma tu asistencia</h2>
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
             <div id="step-1">
-                <h3 id="familia-title" class="text-2xl md:text-3xl mb-2 font-script text-[#E26D5A]">Buscando tu invitación...</h3>
+                <h3 id="familia-title" class="text-3xl mb-2 font-script text-[#E26D5A]">Buscando tu invitación...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">Selecciona quiénes asistirán para emitir los pases VIP.</p>
                 <div id="lista-invitados" class="text-left mb-6 space-y-3">
                     <p class="text-center italic text-gray-500">Conectando con la base de datos...</p>
@@ -150,33 +164,37 @@
         </div>
     </section>
 
-    <section class="py-16 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
-        <div class="glass-panel p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
-            <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Playlist</p>
-            <h2 class="text-4xl mb-4 font-script text-[#E26D5A]">La música</h2>
-            <div id="playlist-container" class="flex-1 overflow-y-auto mb-6 text-left space-y-3 pr-2 custom-scrollbar">
-                <p class="text-center italic text-gray-500 text-sm mt-10">Cargando canciones...</p>
+    <!-- SECCIÓN 6: INTERACTIVOS (FONDO VERDE SALVIA) -->
+    <section class="py-16 w-full bg-[#8CA38D]">
+        <div class="px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
+            <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
+                <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Playlist</p>
+                <h2 class="text-4xl mb-4 font-script text-white">La música</h2>
+                <div id="playlist-container" class="flex-1 overflow-y-auto mb-6 text-left space-y-3 pr-2 custom-scrollbar">
+                    <p class="text-center italic text-white/70 text-sm mt-10">Cargando canciones...</p>
+                </div>
+                <div class="mt-auto">
+                    <input type="text" id="input-cancion" placeholder="Nombre de la canción o artista" class="w-full p-3 rounded-xl border-none mb-3 bg-white/90 text-gray-800 focus:outline-none text-sm shadow-inner">
+                    <button id="btn-pedir-cancion" onclick="pedirCancion()" class="w-full bg-[#E26D5A] text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#C95B4A] transition shadow-md">🎵 Pedir Canción</button>
+                </div>
             </div>
-            <div class="mt-auto">
-                <input type="text" id="input-cancion" placeholder="Nombre de la canción o artista" class="w-full p-3 rounded-lg border border-[#8CA38D] mb-3 bg-white/60 focus:outline-none text-sm">
-                <button id="btn-pedir-cancion" onclick="pedirCancion()" class="w-full bg-[#8CA38D] text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#7A8F7A] transition">🎵 Pedir Canción</button>
-            </div>
-        </div>
 
-        <div class="glass-panel p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
-            <p class="uppercase tracking-widest text-xs text-gray-500 mb-2">Álbum colaborativo</p>
-            <h2 class="text-4xl mb-4 font-script text-[#E26D5A]">Galería de Fotos</h2>
-            <div id="gallery-carousel" class="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-4 mb-6 pb-2 items-center custom-scrollbar" style="scroll-behavior: smooth;">
-                <p class="text-center italic text-gray-500 text-sm w-full">Cargando galería...</p>
-            </div>
-            <div class="mt-auto shrink-0">
-                <input type="file" id="input-foto" accept="image/*" class="hidden" onchange="subirFoto(this)">
-                <button id="btn-subir-foto" onclick="document.getElementById('input-foto').click()" class="w-full border-2 border-[#8CA38D] text-[#8CA38D] py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#8CA38D] hover:text-white transition">📸 Subir Foto al Álbum</button>
+            <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
+                <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Álbum colaborativo</p>
+                <h2 class="text-4xl mb-4 font-script text-white">Galería de Fotos</h2>
+                <div id="gallery-carousel" class="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-4 mb-6 pb-2 items-center custom-scrollbar" style="scroll-behavior: smooth;">
+                    <p class="text-center italic text-white/70 text-sm w-full">Cargando galería...</p>
+                </div>
+                <div class="mt-auto shrink-0">
+                    <input type="file" id="input-foto" accept="image/*" class="hidden" onchange="subirFoto(this)">
+                    <button id="btn-subir-foto" onclick="document.getElementById('input-foto').click()" class="w-full border-2 border-white/80 text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-white hover:text-[#8CA38D] transition">📸 Subir Foto al Álbum</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="text-center py-8 mt-10 text-[11px] uppercase tracking-widest text-gray-500 bg-white/30">
+    <!-- FOOTER (FONDO VERDE OSCURO) -->
+    <footer class="text-center py-8 text-[11px] uppercase tracking-widest text-[#FDFBF7] bg-[#2E3B32]">
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
@@ -245,7 +263,7 @@
                     document.getElementById('btn-confirmar').classList.remove('hidden');
                     let html = '';
                     familyMembers.forEach((m, idx) => {
-                        html += `<label class="flex items-center justify-between p-3 bg-white/50 rounded-lg border border-white/60 cursor-pointer"><div class="flex items-center space-x-3"><input type="checkbox" id="chk-${idx}" checked class="w-5 h-5 accent-[#E26D5A]"><span class="text-lg text-gray-800">${m.nombre}</span></div><span class="text-[10px] uppercase text-gray-400 border border-gray-300 px-2 py-1 rounded-full">${m.tipo}</span></label>`;
+                        html += `<label class="flex items-center justify-between p-3 bg-white/70 rounded-lg border border-[#8CA38D]/20 cursor-pointer shadow-sm"><div class="flex items-center space-x-3"><input type="checkbox" id="chk-${idx}" checked class="w-5 h-5 accent-[#E26D5A]"><span class="text-lg text-gray-800">${m.nombre}</span></div><span class="text-[10px] uppercase text-gray-500 border border-gray-300 px-2 py-1 rounded-full bg-white">${m.tipo}</span></label>`;
                     });
                     document.getElementById('lista-invitados').innerHTML = html;
                 } else {
@@ -264,16 +282,16 @@
             .then(data => {
                 const container = document.getElementById('playlist-container');
                 if (data.songs && data.songs.length > 0) {
-                    container.innerHTML = data.songs.map(s => `<div class="bg-white/40 p-3 rounded-xl border border-[#8CA38D]/50 flex items-center justify-between shadow-sm"><div class="w-full"><p class="text-sm font-semibold text-gray-800 break-words">${s.cancion}</p><p class="text-[10px] uppercase tracking-widest text-[#8CA38D] mt-1">Pedida por: ${s.familia}</p></div><span class="text-xl">🎵</span></div>`).join('');
-                } else { container.innerHTML = '<p class="text-center italic text-gray-500 text-sm mt-10">Aún no hay canciones.<br>¡Sé el primero en pedir una!</p>'; }
+                    container.innerHTML = data.songs.map(s => `<div class="bg-white/95 p-3 rounded-xl border border-white/50 flex items-center justify-between shadow-sm"><div class="w-full"><p class="text-sm font-semibold text-gray-800 break-words">${s.cancion}</p><p class="text-[10px] uppercase tracking-widest text-[#8CA38D] mt-1">Pedida por: ${s.familia}</p></div><span class="text-xl">🎵</span></div>`).join('');
+                } else { container.innerHTML = '<p class="text-center italic text-white/70 text-sm mt-10">Aún no hay canciones.<br>¡Sé el primero en pedir una!</p>'; }
             });
             fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPhotos' }) })
             .then(res => res.json())
             .then(data => {
                 const container = document.getElementById('gallery-carousel');
                 if (data.photos && data.photos.length > 0) {
-                    container.innerHTML = data.photos.map(p => `<div class="snap-center shrink-0 w-64 h-[280px] bg-white p-2 rounded-2xl shadow-sm border border-[#8CA38D] flex flex-col justify-center"><img src="${p.url}" class="w-full h-full object-contain rounded-xl bg-gray-100" loading="lazy"><p class="text-[10px] uppercase tracking-widest text-center mt-2 text-gray-500 font-semibold truncate">Cámara: ${p.familia}</p></div>`).join('');
-                } else { container.innerHTML = '<p class="text-center italic text-gray-500 text-sm w-full">Aún no hay fotos.<br>¡Sube la primera!</p>'; }
+                    container.innerHTML = data.photos.map(p => `<div class="snap-center shrink-0 w-64 h-[280px] bg-white/95 p-2 rounded-2xl shadow-md border border-white/50 flex flex-col justify-center"><img src="${p.url}" class="w-full h-full object-contain rounded-xl bg-gray-100" loading="lazy"><p class="text-[10px] uppercase tracking-widest text-center mt-2 text-[#8CA38D] font-semibold truncate">Cámara: ${p.familia}</p></div>`).join('');
+                } else { container.innerHTML = '<p class="text-center italic text-white/70 text-sm w-full">Aún no hay fotos.<br>¡Sube la primera!</p>'; }
             });
         }
 
@@ -336,7 +354,7 @@
                 const qrText = `MAJU_XV_${m.rowId}_${Date.now()}`; payloadConfirmaciones.push({ rowId: m.rowId, qrCode: qrText });
                 const qr = new QRious({ value: qrText, size: 250, level: 'H', foreground: '#000000', background: '#ffffff' });
                 const qrBase64Image = qr.toDataURL(); const ticketID = `ticket-${m.rowId}`;
-                const ticketHTML = `<div class="mb-8"><div class="flex justify-center mb-4"><div id="${ticketID}" style="background-color: #FDFBF7; width: 300px; border-radius: 12px; overflow: hidden; border: 1px solid #8CA38D; position: relative;"><div style="background-color: #8CA38D; padding: 16px 0; text-align: center; border-bottom: 2px dashed #FDFBF7; position: relative;"><h4 class="font-script text-white" style="font-size: 36px; margin: 0; line-height: 1;">VIP Pass</h4><div class="absolute -bottom-3 -left-3 w-6 h-6 bg-[#FDFBF7] rounded-full border border-[#8CA38D]"></div><div class="absolute -bottom-3 -right-3 w-6 h-6 bg-[#FDFBF7] rounded-full border border-[#8CA38D]"></div></div><div style="padding: 24px; text-align: center;"><p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p><h1 class="font-script" style="font-size: 36px; color: #E26D5A; margin: 0 0 16px 0; line-height: 1;">Maju</h1><div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;"><p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p><h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5></div><div style="background-color: #ffffff; padding: 10px; border: 1px solid #8CA38D; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;"><img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" /></div><p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p></div></div></div><button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full border-2 border-[#8CA38D] bg-white text-[#8CA38D] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8CA38D] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button></div>`;
+                const ticketHTML = `<div class="mb-8"><div class="flex justify-center mb-4"><div id="${ticketID}" style="background-color: #FDFBF7; width: 300px; border-radius: 12px; overflow: hidden; border: 1px solid #8CA38D; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"><div style="background-color: #8CA38D; padding: 16px 0; text-align: center; border-bottom: 2px dashed #FDFBF7; position: relative;"><h4 class="font-script text-white" style="font-size: 36px; margin: 0; line-height: 1;">VIP Pass</h4><div class="absolute -bottom-3 -left-3 w-6 h-6 bg-[#FDFBF7] rounded-full border border-[#8CA38D]"></div><div class="absolute -bottom-3 -right-3 w-6 h-6 bg-[#FDFBF7] rounded-full border border-[#8CA38D]"></div></div><div style="padding: 24px; text-align: center;"><p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Mis XV Años</p><h1 class="font-script" style="font-size: 36px; color: #E26D5A; margin: 0 0 16px 0; line-height: 1;">Maju</h1><div style="padding: 12px 0; margin-bottom: 16px; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db;"><p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0 0 4px 0;">Invitado Especial</p><h5 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">${m.nombre}</h5></div><div style="background-color: #ffffff; padding: 10px; border: 1px solid #8CA38D; border-radius: 12px; display: block; width: 140px; margin: 0 auto 12px auto; line-height: 0;"><img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" /></div><p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin: 0;">07 NOV 2026 • 7:30 PM</p></div></div></div><button onclick="descargarTicket('${ticketID}', this, '${m.nombre}')" class="w-full border-2 border-[#8CA38D] bg-white text-[#8CA38D] py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8CA38D] hover:text-white transition">⬇ Descargar Pase de ${m.nombre.split(' ')[0]}</button></div>`;
                 container.insertAdjacentHTML('beforeend', ticketHTML);
             });
             fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones }) });
