@@ -6,31 +6,34 @@
     <title>XV Maju Isabella - Amigos</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Mantenemos la tipografía original elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
-        /* Paleta Pantone proporcionada */
+        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-fuchsia { background-color: #DE3566; }
-        .bg-fuchsia-light { background-color: #FF9BAE; }
-        
         .color-tangerine { color: #FF9B3D; }
         .bg-tangerine { background-color: #FF9B3D; }
-        .bg-sunshine { background-color: #FCCC60; }
-        
         .color-olive { color: #728A2C; }
         .bg-olive { background-color: #728A2C; }
-        .bg-sage { background-color: #BAC664; }
+
+        /* Colores del Dress Code Originales */
+        .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
+        .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
+        .bg-champagne { background-color: #E6D3B3; border: 1px solid #d1d5db; }
+        .bg-taupe { background-color: #A69889; border: 1px solid #9ca3af; }
+        .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
+        .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
         .glass-panel {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08); /* Sombra fucsia suave */
+            box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08);
         }
         
         .glass-panel-dark {
@@ -40,28 +43,25 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Destellos de celebración */
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        /* Estilo para las flores y bola disco */
-        .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; mix-blend-mode: multiply; }
         .disco-ball { position: absolute; top: -30px; right: -20px; width: 140px; pointer-events: none; z-index: 10; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
+        /* Animación para el icono de regalo */
+        .bounce-gift { animation: bounce-gentle 2.5s infinite; }
+        @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body class="relative">
 
-    <!-- REPRODUCTOR DE AUDIO (OCULTO) -->
     <audio id="bg-music" loop preload="auto">
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL (PANTALLA INICIAL) -->
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
         <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative overflow-hidden w-full max-w-sm">
-            
             <div class="relative z-10">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
                 <h1 class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Maju<br>Isabella</h1>
@@ -72,14 +72,11 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <!-- SECCIÓN 1: INICIO (ESTILO DE LA IMAGEN) -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10 bg-[#FDFBF7] overflow-hidden">
-        
-        <!-- Elementos decorativos simulando el diseño proporcionado -->
+        <!-- BOLA DE DISCOTECA (Tal como en el adjunto) -->
         <img src="https://cdn-icons-png.flaticon.com/512/8017/8017558.png" onerror="this.style.display='none'" alt="Disco" class="disco-ball">
         
         <div class="glass-panel p-8 md:p-10 rounded-3xl max-w-md w-full mt-10 relative overflow-hidden z-10 border-2 border-[#DE3566]/20">
-            
             <p class="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500 font-semibold">Birthday XV Party</p>
             
             <h1 class="font-script text-8xl md:text-9xl color-fuchsia leading-[0.7] mb-2 drop-shadow-sm">Maju</h1>
@@ -105,7 +102,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: CUENTA REGRESIVA (FONDO FUCSIA) -->
     <section class="py-12 px-6 text-center bg-fuchsia">
         <h2 class="text-4xl italic mb-6 text-white font-script">Falta poco</h2>
         <div class="glass-panel-dark p-6 rounded-2xl inline-block border border-white/40">
@@ -118,7 +114,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: UBICACIÓN -->
     <section class="py-16 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[11px] color-olive font-bold mb-2">Dónde</p>
         <h2 class="text-3xl md:text-4xl font-bold mb-3 color-fuchsia">Urb. Santa Sofía B-8</h2>
@@ -128,28 +123,44 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: DRESS CODE CON NUEVOS COLORES -->
+    <!-- DRESS CODE ORIGINAL -->
     <section id="vestimenta" class="py-16 px-6 text-center bg-olive text-white relative overflow-hidden">
         <p class="uppercase tracking-[0.3em] text-[11px] text-white/90 font-bold mb-2">Código de Vestimenta</p>
         <h2 class="text-4xl font-bold mb-6 text-white">Cocktail</h2>
-        <p class="max-w-md mx-auto mb-10 italic text-white/95">Estos son los tonos sugeridos para acompañarnos en esta noche especial.</p>
+        <p class="max-w-md mx-auto mb-10 italic text-white/95">Tonos elegidos para la noche.</p>
         
-        <div class="flex flex-wrap justify-center gap-4 md:gap-8 max-w-2xl mx-auto mb-8">
-            <div class="text-center"><span class="color-circle bg-fuchsia shadow-lg border-2 border-white"></span><p class="text-xs text-white font-semibold mt-1">Fucsia</p></div>
-            <div class="text-center"><span class="color-circle bg-fuchsia-light shadow-lg border-2 border-white"></span><p class="text-xs text-white font-semibold mt-1">Rosa</p></div>
-            <div class="text-center"><span class="color-circle bg-tangerine shadow-lg border-2 border-white"></span><p class="text-xs text-white font-semibold mt-1">Naranja</p></div>
-            <div class="text-center"><span class="color-circle bg-sunshine shadow-lg border-2 border-white"></span><p class="text-xs text-white font-semibold mt-1">Amarillo</p></div>
-            <div class="text-center"><span class="color-circle bg-sage shadow-lg border-2 border-white"></span><p class="text-xs text-white font-semibold mt-1">Verde Claro</p></div>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6 max-w-2xl mx-auto mb-8">
+            <div class="text-center"><span class="color-circle bg-white" style="border: 1px solid #ccc;"></span><p class="text-xs text-white mt-1">Blanco</p></div>
+            <div class="text-center"><span class="color-circle bg-ivory"></span><p class="text-xs text-white mt-1">Marfil</p></div>
+            <div class="text-center"><span class="color-circle bg-sand"></span><p class="text-xs text-white mt-1">Beige arena</p></div>
+            <div class="text-center"><span class="color-circle bg-champagne"></span><p class="text-xs text-white mt-1">Champán</p></div>
+            <div class="text-center"><span class="color-circle bg-taupe"></span><p class="text-xs text-white mt-1">Taupe</p></div>
+            <div class="text-center"><span class="color-circle bg-silver"></span><p class="text-xs text-white mt-1">Plateado suave</p></div>
         </div>
         <div class="text-center mt-6">
-            <span class="color-circle bg-black-teen border-2 border-white shadow-lg"></span><p class="text-xs font-bold text-white mt-1">Negro: solo caballeros</p>
+            <span class="color-circle bg-black-teen border-2 border-white/50"></span><p class="text-xs font-bold text-white mt-1">Negro: solo caballeros</p>
         </div>
         <p class="mt-8 text-sm max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <!-- SECCIÓN 5: RSVP POR WHATSAPP DIRECTO -->
+    <!-- NUEVA SECCIÓN: REGALOS (CREATIVOS) -->
+    <section id="regalos" class="py-16 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
+        <!-- Gif animado de regalo (transparente) -->
+        <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-4 bounce-gift opacity-90 drop-shadow-md">
+        
+        <p class="uppercase tracking-[0.3em] text-[11px] color-tangerine font-bold mb-2">Un detalle especial</p>
+        <h2 class="text-4xl font-script mb-6 color-fuchsia">Regalos</h2>
+        
+        <div class="glass-panel p-8 rounded-[2rem] max-w-lg mx-auto shadow-md border-[2px] border-[#FF9B3D]/30">
+            <p class="text-gray-700 font-medium text-[1.1rem] leading-relaxed italic">
+                "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
+            </p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: RSVP DIRECTO POR WHATSAPP -->
     <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
-        <p class="uppercase tracking-[0.3em] text-[11px] color-tangerine font-bold mb-2">Confirmación</p>
+        <p class="uppercase tracking-[0.3em] text-[11px] color-olive font-bold mb-2">Confirmación</p>
         <h2 class="text-5xl font-script mb-6 color-fuchsia">¡Te esperamos!</h2>
         <div class="glass-panel p-8 rounded-[2rem] max-w-md mx-auto shadow-md border-[3px] border-[#BAC664]">
             
@@ -168,14 +179,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="text-center py-10 text-[11px] uppercase tracking-[0.2em] font-bold text-[#FDFBF7] bg-[#2E3B32]">
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT -->
     <script>
-        // Animación de destellos (estilo estrellas de la tarjeta)
         function createSparkles() { 
             const container = document.getElementById('petals-container'); 
             const colors = ['#DE3566', '#FF9B3D', '#FCCC60', '#BAC664']; 
@@ -184,13 +192,10 @@
                 p.className = 'sparkle'; 
                 p.style.left = Math.random() * 100 + 'vw'; 
                 p.style.top = Math.random() * 100 + 'vh';
-                
-                // Forma de estrella (clip-path)
                 p.style.width = (Math.random() * 10 + 10) + 'px'; 
                 p.style.height = p.style.width; 
                 p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; 
                 p.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-                
                 p.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
                 p.style.animationDelay = Math.random() * 3 + 's'; 
                 container.appendChild(p); 
@@ -198,7 +203,6 @@
         } 
         createSparkles();
 
-        // Cuenta regresiva
         const eventDate = new Date('Nov 7, 2026 19:30:00').getTime(); 
         setInterval(() => { 
             const now = new Date().getTime(); const distance = eventDate - now; 
@@ -208,7 +212,6 @@
             document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); 
         }, 1000);
 
-        // PLAY MUSICAL AL ABRIR EL SOBRE
         document.getElementById('envelope-screen').addEventListener('click', function() {
             const audio = document.getElementById('bg-music');
             audio.volume = 0.5;
@@ -217,22 +220,15 @@
             setTimeout(() => { this.style.display = 'none'; }, 1000);
         });
 
-        // CONFIRMACIÓN DIRECTA A WHATSAPP
         function confirmarPorWhatsApp() {
             const nombre = document.getElementById('nombreAmigo').value.trim();
-            
             if(!nombre) {
                 alert("Por favor, ingresa tu nombre antes de confirmar.");
                 return;
             }
-
-            const numeroDestino = "51914972428"; // Número temporal proporcionado
-            
-            // Construcción del mensaje exacto
+            const numeroDestino = "51914972428"; 
             const mensaje = `Hola, mi nombre es ${nombre}, confirmo mi asistencia para tu fiesta ¡Muchas gracias por tu invitación!`;
-            
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensaje)}`;
-            
             window.open(whatsappUrl, '_blank');
         }
     </script>
