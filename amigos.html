@@ -52,6 +52,9 @@
         /* Animación para el icono de regalo */
         .bounce-gift { animation: bounce-gentle 2.5s infinite; }
         @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Estilo para las flores decorativas */
+        .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; mix-blend-mode: multiply; }
     </style>
 </head>
 <body class="relative">
@@ -62,6 +65,11 @@
 
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
         <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative overflow-hidden w-full max-w-sm">
+            
+            <!-- FLORES EN LA PANTALLA INICIAL (Opcional, pero se ve lindo) -->
+            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -top-6 -left-6 transform -rotate-12 opacity-60 pointer-events-none">
+            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -bottom-6 -right-6 transform rotate-180 opacity-60 pointer-events-none">
+
             <div class="relative z-10">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
                 <h1 class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Maju<br>Isabella</h1>
@@ -73,6 +81,11 @@
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10 bg-[#FDFBF7] overflow-hidden">
+        
+        <!-- FLORES EN LAS ESQUINAS RESTAURADAS -->
+        <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -top-10 -left-10 transform -rotate-12">
+        <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -bottom-10 -right-10 transform rotate-180">
+
         <!-- BOLA DE DISCOTECA -->
         <img src="https://cdn-icons-png.flaticon.com/512/8017/8017558.png" onerror="this.style.display='none'" alt="Disco" class="disco-ball">
         
@@ -118,6 +131,7 @@
         </div>
     </section>
 
+    <!-- DRESS CODE ORIGINAL -->
     <section id="vestimenta" class="py-16 px-6 text-center bg-olive text-white relative overflow-hidden">
         <p class="uppercase tracking-[0.3em] text-[11px] text-white/90 font-bold mb-2">Código de Vestimenta</p>
         <h2 class="text-4xl font-bold mb-6 text-white">Cocktail</h2>
