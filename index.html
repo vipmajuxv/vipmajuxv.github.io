@@ -55,7 +55,6 @@
         <h2 class="text-4xl font-semibold mb-6 text-[#A69889]">Confirma tu asistencia</h2>
         
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
-            
             <div id="step-1">
                 <h3 id="familia-title" class="text-2xl md:text-3xl mb-2 font-script text-[#A69889]">Buscando tu invitación...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">Selecciona quiénes asistirán para emitir los pases VIP.</p>
@@ -72,7 +71,6 @@
                     <!-- Se llenarán los tickets aquí -->
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -80,7 +78,6 @@
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT -->
     <script>
         function createPetals() {
             const container = document.getElementById('petals-container');
@@ -181,7 +178,7 @@
                 
                 const ticketHTML = `
                 <div class="mb-8">
-                    <!-- TICKET CON ID PARA CAPTURA -->
+                    <!-- TICKET -->
                     <div id="${ticketID}" style="background-color: #F3EBDD;" class="rounded-xl overflow-hidden border border-[#D8C3A5] mx-auto max-w-[300px] mb-4 relative shadow-lg">
                         <div class="bg-[#D8C3A5] py-4 text-center relative border-b-2 border-dashed border-[#F3EBDD]">
                             <h4 class="font-script text-4xl text-white">VIP Pass</h4>
@@ -196,9 +193,9 @@
                                 <h5 class="text-lg font-semibold text-gray-800">${m.nombre}</h5>
                             </div>
                             
-                            <!-- ESTRUCTURA BLINDADA PARA EL QR -->
+                            <!-- IMAGEN QR LIMPIA SIN ATRIBUTOS DE SEGURIDAD QUE LA BLOQUEEN -->
                             <div style="background-color: #ffffff; padding: 10px; border: 1px solid #D8C3A5; border-radius: 12px; display: inline-block; margin-bottom: 12px;">
-                                <img src="${qrBase64Image}" width="120" height="120" style="display: block; width: 120px; height: 120px; margin: 0 auto;" crossorigin="anonymous" />
+                                <img src="${qrBase64Image}" style="display: block; width: 120px; height: 120px; margin: 0 auto;" />
                             </div>
                             
                             <p class="text-[10px] text-gray-500 uppercase tracking-widest">07 NOV 2026 • 7:30 PM</p>
@@ -218,14 +215,12 @@
             btnElement.innerText = "⏳ PROCESANDO...";
             const ticketDOM = document.getElementById(ticketID);
 
+            // Damos 500ms para asegurar que el celular terminó de pintar el QR en pantalla
             setTimeout(() => {
-                // PARÁMETROS FORZADOS PARA PREVENIR ERRORES EN MOVILES
                 html2canvas(ticketDOM, { 
                     scale: 3, 
                     backgroundColor: '#F3EBDD', 
-                    useCORS: true,
-                    allowTaint: true,
-                    logging: false
+                    useCORS: true
                 }).then(canvas => {
                     const link = document.createElement('a');
                     link.href = canvas.toDataURL('image/png');
@@ -238,7 +233,7 @@
                     alert("Hubo un problema. Por favor toma captura de pantalla del pase.");
                     btnElement.innerText = originalText;
                 });
-            }, 100);
+            }, 500);
         }
     </script>
 </body>
