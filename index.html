@@ -76,12 +76,19 @@
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL -->
+    <!-- SOBRE VIRTUAL (PANTALLA INICIAL REDISEÑADA) -->
     <div id="envelope-screen" class="fixed inset-0 bg-[#F47E7A] z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
-        <div class="glass-panel p-10 md:p-16 rounded-3xl text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-white/40 border">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-[#FDFBF7] mb-3">Mis XV Maju</p>
-            <h1 id="envelope-greeting" class="font-script text-5xl md:text-7xl text-white mb-8" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.15);">Hola...</h1>
-            <button class="bg-[#FDFBF7] text-[#E26D5A] px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest animate-pulse shadow-lg">Abrir Invitación</button>
+        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-[#F47E7A]/20 relative overflow-hidden w-full max-w-sm">
+            
+            <!-- Flores dentro del sobre -->
+            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -top-6 -left-6 transform -rotate-12 opacity-60 pointer-events-none">
+            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -bottom-6 -right-6 transform rotate-180 opacity-60 pointer-events-none">
+            
+            <div class="relative z-10">
+                <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] text-[#8CA38D] mb-4">Mis XV Maju</p>
+                <h1 id="envelope-greeting" class="font-script text-6xl md:text-7xl text-[#E26D5A] mb-10 leading-tight">Hola...</h1>
+                <button class="bg-[#E26D5A] text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest animate-pulse shadow-lg border border-[#C95B4A]">Abrir Invitación</button>
+            </div>
         </div>
     </div>
 
@@ -90,7 +97,7 @@
     <!-- SECCIÓN 1: INICIO (FONDO CREMA CON FLORES) -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
-        <!-- Decoración Floral Esquinas (Cargará tu imagen 'flores.png' de GitHub) -->
+        <!-- Decoración Floral Esquinas -->
         <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -top-10 -left-10 transform -rotate-12">
         <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -bottom-10 -right-10 transform rotate-180">
 
