@@ -45,9 +45,15 @@
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        /* Animación para el icono de regalo */
+        /* Animación de regalo */
         .bounce-gift { animation: bounce-gentle 2.5s infinite; }
         @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Animaciones para las esferas de luces */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        .float-disco { animation: float 5s ease-in-out infinite; }
+        .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
+        .float-disco-slow { animation: float 7s ease-in-out infinite 0.5s; }
     </style>
 </head>
 <body class="relative">
@@ -58,7 +64,12 @@
 
     <!-- SOBRE VIRTUAL -->
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
-        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative overflow-hidden w-full max-w-sm">
+        <!-- Se eliminó overflow-hidden para que la esfera pueda sobresalir -->
+        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm">
+            
+            <!-- ESFERA DE INICIO -->
+            <img src="disco.png" alt="Disco" class="absolute -top-12 -left-8 w-28 md:w-32 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
+
             <div class="relative z-10">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
                 <h1 class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Maju<br>Isabella</h1>
@@ -76,9 +87,9 @@
             <!-- Doble borde interno -->
             <div class="absolute inset-2 border-[1px] border-[#728A2C] opacity-50 pointer-events-none"></div>
 
-            <!-- FLORES Y DISCO DESDE GITHUB -->
+            <!-- FLORES Y DISCO -->
             <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-36 md:w-44 pointer-events-none z-20">
-            <img src="disco.png" alt="Disco" class="absolute -top-4 -right-4 w-28 md:w-32 pointer-events-none z-20 drop-shadow-md">
+            <img src="disco.png" alt="Disco" class="absolute -top-8 -right-6 w-28 md:w-36 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-10 mt-6">
                 <p class="text-[10px] uppercase tracking-[0.3em] mb-4 text-[#728A2C] font-semibold">Birthday XV Party</p>
@@ -165,7 +176,7 @@
         <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-4 bounce-gift opacity-90 drop-shadow-md">
         <p class="uppercase tracking-[0.3em] text-[11px] color-tangerine font-bold mb-2">Un detalle especial</p>
         <h2 class="text-4xl font-script mb-6 color-fuchsia">Regalos</h2>
-        <div class="glass-panel p-8 rounded-[2rem] max-w-lg mx-auto shadow-md border-[2px] border-[#FF9B3D]/30">
+        <div class="glass-panel p-8 rounded-[2rem] max-w-lg mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
             <p class="text-gray-700 font-medium text-[1.1rem] leading-relaxed italic">
                 "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
             </p>
@@ -176,17 +187,21 @@
     <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-[0.3em] text-[11px] color-olive font-bold mb-2">Confirmación</p>
         <h2 class="text-5xl font-script mb-6 color-fuchsia">¡Te esperamos!</h2>
-        <div class="glass-panel p-8 rounded-[2rem] max-w-md mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white">
-            <p class="text-gray-700 mb-6 font-medium text-sm leading-relaxed">
+        <div class="glass-panel p-8 rounded-[2rem] max-w-md mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white relative">
+            
+            <!-- ESFERA DE CONFIRMACIÓN -->
+            <img src="disco.png" alt="Disco" class="absolute -top-10 -right-8 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-slow">
+
+            <p class="text-gray-700 mb-6 font-medium text-sm leading-relaxed relative z-10">
                 Por favor, ingresa tu nombre y haz clic en el botón para confirmar tu asistencia directamente por WhatsApp.
             </p>
-            <input type="text" id="nombreAmigo" class="w-full p-4 rounded-xl border-2 border-[#BAC664] mb-4 text-center font-bold text-gray-700 focus:outline-none focus:border-[#728A2C]" placeholder="Tu Nombre y Apellido">
+            <input type="text" id="nombreAmigo" class="w-full p-4 rounded-xl border-2 border-[#BAC664] mb-4 text-center font-bold text-gray-700 focus:outline-none focus:border-[#728A2C] relative z-10" placeholder="Tu Nombre y Apellido">
             
-            <button onclick="confirmarPorWhatsApp()" class="w-full bg-olive text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-[#5C7023] transition shadow-lg flex items-center justify-center gap-2">
+            <button onclick="confirmarPorWhatsApp()" class="w-full bg-olive text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-[#5C7023] transition shadow-lg flex items-center justify-center gap-2 relative z-10">
                 <span>Confirmar Asistencia</span>
                 <span class="text-lg">›</span>
             </button>
-            <p class="mt-6 text-[10px] uppercase tracking-widest text-gray-500 font-bold">Hasta el 31 de octubre</p>
+            <p class="mt-6 text-[10px] uppercase tracking-widest text-gray-500 font-bold relative z-10">Hasta el 31 de octubre</p>
         </div>
     </section>
 
