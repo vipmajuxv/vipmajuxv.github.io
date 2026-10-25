@@ -12,13 +12,18 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
+        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
-        .bg-fuchsia { background-color: #DE3566; }
+        
+        /* NUEVO: Fondo Rosado Suave para reemplazar los bloques fucsia fuertes */
+        .bg-soft-pink { background-color: #EA657A; } 
+        
         .color-tangerine { color: #FF9B3D; }
         .bg-tangerine { background-color: #FF9B3D; }
         .color-olive { color: #9CA83D; }
         .bg-olive { background-color: #9CA83D; }
 
+        /* Colores del Dress Code */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -51,10 +56,9 @@
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL -->
-    <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
+    <!-- SOBRE VIRTUAL: Se cambió bg-fuchsia por bg-soft-pink -->
+    <div id="envelope-screen" class="fixed inset-0 bg-soft-pink z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
         
-        <!-- FLORES DE FONDO EN EL SOBRE INICIAL -->
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-25 pointer-events-none transform -rotate-45 z-0">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-25 pointer-events-none transform rotate-45 z-0">
 
@@ -112,7 +116,8 @@
         </div>
     </section>
 
-    <section class="py-12 px-6 text-center bg-fuchsia">
+    <!-- CUENTA REGRESIVA: Se cambió bg-fuchsia por bg-soft-pink -->
+    <section class="py-12 px-6 text-center bg-soft-pink">
         <h2 class="text-4xl md:text-5xl italic mb-6 text-white font-script">Falta poco</h2>
         <div class="glass-panel-dark p-6 rounded-2xl inline-block border border-white/40">
             <div class="flex gap-4 md:gap-8 justify-center text-center text-white">
@@ -124,12 +129,14 @@
         </div>
     </section>
 
+    <!-- MAPA: Se cambió text-color-fuchsia por color de texto rosado suave en el título -->
     <section class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[13px] color-olive font-bold mb-2">Dónde</p>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 color-fuchsia">Urb. Santa Sofía B-8</h2>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: #EA657A;">Urb. Santa Sofía B-8</h2>
         <p class="max-w-md mx-auto mb-8 text-gray-700 text-base font-bold">Challapampa, Cerro Colorado, Arequipa<br>7:30 p.m.</p>
         <div>
-            <a href="https://www.google.com/maps/search/?api=1&query=-16.386789,-71.562056" target="_blank" class="inline-block px-10 py-4 bg-tangerine text-white rounded-full uppercase tracking-[0.2em] text-sm hover:bg-[#E68A36] transition shadow-lg font-bold">Ver ubicación en el Mapa</a>
+            <!-- Se cambió bg-tangerine a un rosado suave como botón principal -->
+            <a href="https://www.google.com/maps/search/?api=1&query=-16.386789,-71.562056" target="_blank" class="inline-block px-10 py-4 bg-[#EA657A] text-white rounded-full uppercase tracking-[0.2em] text-sm hover:bg-[#d6576b] transition shadow-lg font-bold">Ver ubicación en el Mapa</a>
         </div>
     </section>
 
@@ -151,11 +158,12 @@
         <p class="mt-8 text-base max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
+    <!-- REGALOS: Se cambió el color del título a rosado suave -->
+    <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#EA657A]/10">
         <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
         
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
-        <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
+        <h2 class="text-6xl font-script mb-8" style="color: #EA657A;">Regalos</h2>
         <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
             <p class="text-gray-700 font-bold text-[1.2rem] md:text-xl leading-relaxed italic">
                 "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
@@ -172,46 +180,47 @@
         <div class="max-w-2xl mx-auto relative z-10 px-2">
             
             <div class="mb-5">
-                <label class="form-label">Nombres</label>
+                <label class="form-label" style="color: #EA657A;">Nombres</label>
                 <input type="text" id="f_nombres" class="form-input" placeholder="Tus nombres">
             </div>
             
             <div class="flex flex-col md:flex-row gap-5 mb-5">
                 <div class="w-full md:w-1/2">
-                    <label class="form-label">Apellido Paterno</label>
+                    <label class="form-label" style="color: #EA657A;">Apellido Paterno</label>
                     <input type="text" id="f_apPaterno" class="form-input" placeholder="Apellido paterno">
                 </div>
                 <div class="w-full md:w-1/2">
-                    <label class="form-label">Apellido Materno</label>
+                    <label class="form-label" style="color: #EA657A;">Apellido Materno</label>
                     <input type="text" id="f_apMaterno" class="form-input" placeholder="Apellido materno">
                 </div>
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Celular</label>
+                <label class="form-label" style="color: #EA657A;">Celular</label>
                 <input type="tel" id="f_celular" class="form-input" placeholder="987 654 321">
-                <p class="text-left text-[0.65rem] text-[#DE3566] ml-2 mt-1 font-semibold">9 dígitos. Te avisaremos por WhatsApp.</p>
+                <p class="text-left text-[0.65rem] ml-2 mt-1 font-semibold" style="color: #EA657A;">9 dígitos. Te avisaremos por WhatsApp.</p>
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Correo (Opcional)</label>
+                <label class="form-label" style="color: #EA657A;">Correo (Opcional)</label>
                 <input type="email" id="f_correo" class="form-input" placeholder="tu@correo.com">
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Colegio</label>
+                <label class="form-label" style="color: #EA657A;">Colegio</label>
                 <input type="text" id="f_colegio" class="form-input" placeholder="Colegio de procedencia">
             </div>
 
             <div class="mb-8">
-                <label class="form-label">¿Asistirás?</label>
+                <label class="form-label" style="color: #EA657A;">¿Asistirás?</label>
                 <select id="f_asistencia" class="form-input cursor-pointer">
                     <option value="Sí, asistiré">Sí, asistiré</option>
                     <option value="No podré asistir">No podré asistir</option>
                 </select>
             </div>
 
-            <button id="btnEnviar" onclick="enviarFormulario()" class="w-full bg-[#DE3566] text-white py-4 rounded-full uppercase tracking-widest text-[13px] font-bold hover:bg-[#b82a52] transition shadow-xl mt-4">
+            <!-- Botón en rosado suave -->
+            <button id="btnEnviar" onclick="enviarFormulario()" class="w-full text-white py-4 rounded-full uppercase tracking-widest text-[13px] font-bold transition shadow-xl mt-4" style="background-color: #EA657A;">
                 Enviar Confirmación
             </button>
             
@@ -225,7 +234,7 @@
     <script>
         function createSparkles() { 
             const container = document.getElementById('petals-container'); 
-            const colors = ['#DE3566', '#FF9B3D', '#FCCC60', '#9CA83D']; 
+            const colors = ['#EA657A', '#FF9B3D', '#FCCC60', '#9CA83D']; 
             for (let i = 0; i < 25; i++) { 
                 let p = document.createElement('div'); 
                 p.className = 'sparkle'; 
