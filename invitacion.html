@@ -37,7 +37,6 @@
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        /* Nueva animación de movimiento para el ícono de regalo (wobble suave) */
         .bounce-gift { animation: wobble-gentle 3s ease-in-out infinite; transform-origin: bottom center; }
         @keyframes wobble-gentle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
         
@@ -52,8 +51,14 @@
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
-        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm">
+    <!-- SOBRE VIRTUAL -->
+    <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
+        
+        <!-- FLORES DE FONDO EN EL SOBRE INICIAL -->
+        <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-25 pointer-events-none transform -rotate-45 z-0">
+        <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-25 pointer-events-none transform rotate-45 z-0">
+
+        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm z-10">
             <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
             <div class="relative z-10 mt-4">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
@@ -147,7 +152,6 @@
     </section>
 
     <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
-        <!-- ÍCONO DE REGALO ACTUALIZADO AL ARCHIVO regalo.png -->
         <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
         
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
