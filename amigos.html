@@ -78,51 +78,51 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <!-- SECCIÓN 1: DISEÑO EXACTO DE LA TARJETA (TAMAÑOS Y MÁRGENES CORREGIDOS) -->
+    <!-- SECCIÓN 1: DISEÑO EXACTO DE LA TARJETA -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
-        <div class="glass-panel relative p-8 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
+        <div class="glass-panel relative p-6 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
             <!-- Doble borde interno -->
-            <div class="absolute inset-3 border-[1px] border-[#728A2C] opacity-50 pointer-events-none"></div>
+            <div class="absolute inset-3 border-[1.5px] border-[#728A2C] opacity-50 pointer-events-none"></div>
 
             <!-- FLORES Y DISCO -->
-            <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-36 md:w-44 pointer-events-none z-20">
-            <!-- Disco ajustada para no tapar -->
+            <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-44 md:w-56 pointer-events-none z-20">
             <img src="disco.png" alt="Disco" class="absolute -top-8 -right-6 w-28 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-10 mt-6">
-                <!-- Títulos comprimidos -->
-                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] mb-2 text-[#728A2C] font-semibold">Birthday XV Party</p>
-                <h1 class="font-script text-8xl md:text-[110px] color-fuchsia leading-[0.6] mb-3 drop-shadow-sm">Maju</h1>
-                <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-tight">Isabella</h1>
-                <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-bold">Marquina Valderrama</p>
+                <!-- Títulos comprimidos y superpuestos correctamente -->
+                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-0">Birthday XV Party</p>
                 
-                <div class="w-16 h-[1.5px] bg-[#728A2C] mx-auto mb-6 opacity-60"></div>
+                <h1 class="font-script text-[110px] md:text-[140px] color-fuchsia leading-[0.5] mb-2 drop-shadow-sm relative z-20 -mt-2">Maju</h1>
+                <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
+                <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-extrabold">Marquina Valderrama</p>
                 
-                <p class="text-[1.05rem] md:text-lg italic text-gray-700 leading-relaxed px-2 mb-6 font-medium">
+                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-5 opacity-60"></div>
+                
+                <p class="text-[1.05rem] md:text-lg italic text-gray-700 leading-tight px-2 mb-5 font-medium">
                     Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable.<br><br>
                     Te esperamos para acompañar a Maju Isabella en una noche muy especial, llena de música, emoción y recuerdos hermosos.
                 </p>
 
-                <div class="w-16 h-[1.5px] bg-[#728A2C] mx-auto mb-5 opacity-60"></div>
-                <p class="uppercase tracking-[0.2em] text-[11px] md:text-[13px] color-olive font-bold mb-6">Celebremos juntos, los espero</p>
+                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-4 opacity-60"></div>
+                <p class="uppercase tracking-[0.2em] text-[11px] md:text-[13px] color-olive font-extrabold mb-6">Celebremos juntos, los espero</p>
 
-                <!-- CUADRÍCULA DE DATOS CON ÍCONOS -->
-                <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-5">
+                <!-- CUADRÍCULA DE DATOS COMPRIMIDA Y EN NEGRITA -->
+                <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-4">
                     <!-- Calendario -->
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50">
                         <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2z"></path></svg>
-                        <p class="uppercase text-[10px] md:text-[11px] font-bold tracking-widest leading-tight">Sábado<br>7 de<br>Noviembre</p>
+                        <p class="uppercase text-[11px] md:text-[13px] font-extrabold tracking-widest leading-[1.2]">Sábado<br>7 de<br>Noviembre</p>
                     </div>
                     <!-- Reloj -->
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50 flex flex-col justify-center h-full pt-1">
                         <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <p class="uppercase text-[11px] md:text-[13px] font-bold tracking-widest leading-tight">7:30 P. M.</p>
+                        <p class="uppercase text-[12px] md:text-[14px] font-extrabold tracking-widest leading-[1.2] mt-2">7:30 P. M.</p>
                     </div>
                     <!-- Mapa -->
                     <div class="w-1/3 text-center px-1">
                         <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <p class="uppercase text-[8px] md:text-[9px] font-bold tracking-widest leading-tight">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
+                        <p class="uppercase text-[9px] md:text-[10px] font-extrabold tracking-widest leading-[1.1]">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
                     </div>
                 </div>
             </div>
@@ -144,13 +144,12 @@
     <section class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[13px] color-olive font-bold mb-2">Dónde</p>
         <h2 class="text-4xl md:text-5xl font-bold mb-4 color-fuchsia">Urb. Santa Sofía B-8</h2>
-        <p class="max-w-md mx-auto mb-8 text-gray-700 text-base">Challapampa, Cerro Colorado, Arequipa<br>7:30 p.m.</p>
+        <p class="max-w-md mx-auto mb-8 text-gray-700 text-base font-bold">Challapampa, Cerro Colorado, Arequipa<br>7:30 p.m.</p>
         <div>
             <a href="https://www.google.com/maps/search/?api=1&query=-16.386789,-71.562056" target="_blank" class="inline-block px-10 py-4 bg-tangerine text-white rounded-full uppercase tracking-[0.2em] text-sm hover:bg-[#E68A36] transition shadow-lg font-bold">Ver ubicación en el Mapa</a>
         </div>
     </section>
 
-    <!-- DRESS CODE ORIGINAL -->
     <section id="vestimenta" class="py-20 px-6 text-center bg-olive text-white relative overflow-hidden">
         <p class="uppercase tracking-[0.3em] text-[13px] text-white/90 font-bold mb-3">Código de Vestimenta</p>
         <h2 class="text-5xl font-bold mb-8 text-white">Cocktail</h2>
@@ -170,25 +169,22 @@
         <p class="mt-8 text-base max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <!-- SECCIÓN: REGALOS (CREATIVOS) -->
     <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
         <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-24 md:w-28 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-md">
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
         <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
         <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
-            <p class="text-gray-700 font-medium text-[1.2rem] md:text-xl leading-relaxed italic">
+            <p class="text-gray-700 font-bold text-[1.2rem] md:text-xl leading-relaxed italic">
                 "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
             </p>
         </div>
     </section>
 
-    <!-- SECCIÓN: RSVP DIRECTO POR WHATSAPP -->
     <section id="rsvp" class="py-24 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-[0.3em] text-[13px] color-olive font-bold mb-3">Confirmación</p>
         <h2 class="text-6xl font-script mb-8 color-fuchsia">¡Te esperamos!</h2>
         <div class="glass-panel p-10 rounded-[2rem] max-w-lg mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white relative">
             
-            <!-- Disco ajustada -->
             <img src="disco.png" alt="Disco" class="absolute -top-10 -right-6 w-24 md:w-32 pointer-events-none z-20 drop-shadow-lg float-disco-slow">
 
             <p class="text-gray-700 mb-8 font-medium text-base leading-relaxed relative z-10 mt-4">
