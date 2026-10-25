@@ -12,13 +12,16 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
+        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-fuchsia { background-color: #DE3566; }
         .color-tangerine { color: #FF9B3D; }
         .bg-tangerine { background-color: #FF9B3D; }
-        .color-olive { color: #728A2C; }
-        .bg-olive { background-color: #728A2C; }
+        /* Nuevo Verde: Pantone Apple Green 15-0543 TCX */
+        .color-olive { color: #9CA83D; }
+        .bg-olive { background-color: #9CA83D; }
 
+        /* Colores del Dress Code */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -27,7 +30,7 @@
         .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
         .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
-        .glass-panel { background: #FDFBF7; border: 1px solid #728A2C; box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08); }
+        .glass-panel { background: #FDFBF7; border: 1px solid #9CA83D; box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08); }
         .glass-panel-dark { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
         
         .form-input { width: 100%; padding: 0.85rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255, 155, 61, 0.3); background-color: rgba(255, 255, 255, 0.7); color: #4b5563; font-weight: 500; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -67,40 +70,39 @@
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
         <div class="glass-panel relative p-6 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
-            <div class="absolute inset-3 border-[1.5px] border-[#728A2C] opacity-50 pointer-events-none"></div>
+            <div class="absolute inset-3 border-[1.5px] border-[#9CA83D] opacity-50 pointer-events-none"></div>
 
+            <!-- Flores en Z-20 -->
             <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-44 md:w-56 pointer-events-none z-20">
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
-            <div class="relative z-10 mt-10">
-                <!-- MARGEN AUMENTADO (mb-8) PARA SEPARAR EL TEXTO DE MAJU -->
-                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-8 mt-2">Birthday XV Party</p>
-                
-                <!-- MARGEN SUPERIOR AÑADIDO (mt-4) PARA EMPUJAR A MAJU HACIA ABAJO -->
-                <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 mt-4 drop-shadow-sm relative z-20">Maju</h1>
+            <!-- Capa de texto elevada a Z-30 para no ser tapada por las flores -->
+            <div class="relative z-30 mt-10">
+                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-2">Birthday XV Party</p>
+                <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
                 <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
-                <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-extrabold">Marquina Valderrama</p>
+                <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#9CA83D] font-extrabold">Marquina Valderrama</p>
                 
-                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-5 opacity-60"></div>
+                <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-5 opacity-60"></div>
                 
                 <p class="text-[1.05rem] md:text-lg italic text-gray-700 leading-snug px-2 mb-5 font-medium max-w-xs md:max-w-sm mx-auto">
                     Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial, llena de música, emoción y recuerdos hermosos.
                 </p>
 
-                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-4 opacity-60"></div>
+                <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-4 opacity-60"></div>
                 <p class="uppercase tracking-[0.2em] text-[11px] md:text-[13px] color-olive font-extrabold mb-6">Celebremos juntos, los espero</p>
 
                 <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-4">
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#9CA83D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <p class="uppercase text-[11px] md:text-[13px] font-extrabold tracking-widest leading-[1.2]">Sábado<br>7 de<br>Noviembre</p>
                     </div>
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50 flex flex-col justify-center h-full pt-1">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#9CA83D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <p class="uppercase text-[13px] md:text-[15px] font-extrabold tracking-widest leading-[1.2] mt-1">7:30 P. M.</p>
                     </div>
                     <div class="w-1/3 text-center px-1">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#9CA83D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path></svg>
                         <p class="uppercase text-[9px] md:text-[10px] font-extrabold tracking-widest leading-[1.1]">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
                     </div>
                 </div>
@@ -148,7 +150,9 @@
     </section>
 
     <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
-        <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-24 md:w-28 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-md">
+        <!-- Ícono de regalo en Blanco y Negro -->
+        <img src="https://cdn-icons-png.flaticon.com/512/285/285090.png" alt="Regalo" class="w-16 md:w-20 mx-auto mb-6 bounce-gift opacity-80">
+        
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
         <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
         <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
@@ -220,7 +224,7 @@
     <script>
         function createSparkles() { 
             const container = document.getElementById('petals-container'); 
-            const colors = ['#DE3566', '#FF9B3D', '#FCCC60', '#BAC664']; 
+            const colors = ['#DE3566', '#FF9B3D', '#FCCC60', '#9CA83D']; 
             for (let i = 0; i < 25; i++) { 
                 let p = document.createElement('div'); 
                 p.className = 'sparkle'; 
