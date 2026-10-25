@@ -51,7 +51,6 @@
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL -->
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
         <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm">
             <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
@@ -74,8 +73,11 @@
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-10 mt-10">
-                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-2">Birthday XV Party</p>
-                <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
+                <!-- MARGEN AUMENTADO (mb-8) PARA SEPARAR EL TEXTO DE MAJU -->
+                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-8 mt-2">Birthday XV Party</p>
+                
+                <!-- MARGEN SUPERIOR AÑADIDO (mt-4) PARA EMPUJAR A MAJU HACIA ABAJO -->
+                <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 mt-4 drop-shadow-sm relative z-20">Maju</h1>
                 <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
                 <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-extrabold">Marquina Valderrama</p>
                 
@@ -98,7 +100,7 @@
                         <p class="uppercase text-[13px] md:text-[15px] font-extrabold tracking-widest leading-[1.2] mt-1">7:30 P. M.</p>
                     </div>
                     <div class="w-1/3 text-center px-1">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         <p class="uppercase text-[9px] md:text-[10px] font-extrabold tracking-widest leading-[1.1]">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
                     </div>
                 </div>
@@ -156,10 +158,7 @@
         </div>
     </section>
 
-    <!-- FORMULARIO DE REGISTRO COMPLETO (ESTILO IMAGEN) -->
     <section id="registro" class="py-20 px-4 text-center bg-[#FDFBF7] relative overflow-hidden">
-        
-        <!-- Elementos florales de fondo simulando la imagen -->
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-20 pointer-events-none transform -rotate-45">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-20 pointer-events-none transform rotate-45">
 
@@ -273,8 +272,7 @@
             btn.innerText = "ENVIANDO DATOS...";
             btn.disabled = true;
 
-            // PEGA AQUÍ TU NUEVA URL DE APPS SCRIPT
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
+            const scriptURL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
             
             const formData = new FormData();
             formData.append('nombres', nombres);
@@ -285,7 +283,6 @@
             formData.append('colegio', colegio);
             formData.append('asistencia', asistencia);
 
-            // Fetch a Google Sheets
             fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
                 .then(response => {
                     const numeroDestino = "51914972428"; 
