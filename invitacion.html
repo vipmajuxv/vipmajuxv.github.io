@@ -12,7 +12,6 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
-        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-fuchsia { background-color: #DE3566; }
         .color-tangerine { color: #FF9B3D; }
@@ -20,7 +19,6 @@
         .color-olive { color: #728A2C; }
         .bg-olive { background-color: #728A2C; }
 
-        /* Colores del Dress Code Originales */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -29,31 +27,22 @@
         .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
         .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
-        .glass-panel {
-            background: #FDFBF7;
-            border: 1px solid #728A2C;
-            box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08);
-        }
+        .glass-panel { background: #FDFBF7; border: 1px solid #728A2C; box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08); }
+        .glass-panel-dark { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
         
-        .glass-panel-dark {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
+        .form-input { width: 100%; padding: 0.85rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(255, 155, 61, 0.3); background-color: rgba(255, 255, 255, 0.7); color: #4b5563; font-weight: 500; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .form-input:focus { outline: none; border-color: #DE3566; background-color: #ffffff; }
+        .form-label { display: block; text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #DE3566; font-weight: 700; margin-bottom: 0.4rem; margin-left: 0.5rem; }
 
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        /* Animación para el icono de regalo */
         .bounce-gift { animation: bounce-gentle 2.5s infinite; }
         @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         
-        /* Animaciones para las esferas de luces */
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .float-disco { animation: float 5s ease-in-out infinite; }
         .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
-        .float-disco-slow { animation: float 7s ease-in-out infinite 0.5s; }
     </style>
 </head>
 <body class="relative">
@@ -65,9 +54,7 @@
     <!-- SOBRE VIRTUAL -->
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
         <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm">
-            
             <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
-
             <div class="relative z-10 mt-4">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
                 <h1 class="font-script text-7xl md:text-8xl color-fuchsia mb-10 leading-[0.8]">Maju<br>Isabella</h1>
@@ -78,21 +65,16 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <!-- SECCIÓN 1: DISEÑO EXACTO DE LA TARJETA -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
         <div class="glass-panel relative p-6 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
-            <!-- Doble borde interno -->
             <div class="absolute inset-3 border-[1.5px] border-[#728A2C] opacity-50 pointer-events-none"></div>
 
-            <!-- FLORES Y DISCO -->
             <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-44 md:w-56 pointer-events-none z-20">
-            <!-- BOLA DE DISCOTECA -->
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-10 mt-10">
                 <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-2">Birthday XV Party</p>
-                
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
                 <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
                 <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-extrabold">Marquina Valderrama</p>
@@ -108,7 +90,7 @@
 
                 <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-4">
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <p class="uppercase text-[11px] md:text-[13px] font-extrabold tracking-widest leading-[1.2]">Sábado<br>7 de<br>Noviembre</p>
                     </div>
                     <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50 flex flex-col justify-center h-full pt-1">
@@ -116,7 +98,7 @@
                         <p class="uppercase text-[13px] md:text-[15px] font-extrabold tracking-widest leading-[1.2] mt-1">7:30 P. M.</p>
                     </div>
                     <div class="w-1/3 text-center px-1">
-                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path></svg>
                         <p class="uppercase text-[9px] md:text-[10px] font-extrabold tracking-widest leading-[1.1]">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
                     </div>
                 </div>
@@ -149,7 +131,6 @@
         <p class="uppercase tracking-[0.3em] text-[13px] text-white/90 font-bold mb-3">Código de Vestimenta</p>
         <h2 class="text-5xl font-bold mb-8 text-white">Cocktail</h2>
         <p class="max-w-md mx-auto mb-10 text-lg italic text-white/95">Tonos elegidos para la noche.</p>
-        
         <div class="flex flex-wrap justify-center gap-6 md:gap-8 max-w-2xl mx-auto mb-10">
             <div class="text-center"><span class="color-circle w-12 h-12 bg-white" style="border: 1px solid #ccc;"></span><p class="text-sm text-white mt-2">Blanco</p></div>
             <div class="text-center"><span class="color-circle w-12 h-12 bg-ivory"></span><p class="text-sm text-white mt-2">Marfil</p></div>
@@ -175,23 +156,61 @@
         </div>
     </section>
 
-    <section id="rsvp" class="py-24 px-6 text-center bg-[#FDFBF7]">
-        <p class="uppercase tracking-[0.3em] text-[13px] color-olive font-bold mb-3">Confirmación</p>
-        <h2 class="text-6xl font-script mb-8 color-fuchsia">¡Te esperamos!</h2>
-        <div class="glass-panel p-10 rounded-[2rem] max-w-lg mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white relative">
-            
-            <img src="disco.png" alt="Disco" class="absolute -top-10 -right-6 w-24 md:w-32 pointer-events-none z-20 drop-shadow-lg float-disco-slow">
+    <!-- FORMULARIO DE REGISTRO COMPLETO (ESTILO IMAGEN) -->
+    <section id="registro" class="py-20 px-4 text-center bg-[#FDFBF7] relative overflow-hidden">
+        
+        <!-- Elementos florales de fondo simulando la imagen -->
+        <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-20 pointer-events-none transform -rotate-45">
+        <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-20 pointer-events-none transform rotate-45">
 
-            <p class="text-gray-700 mb-8 font-medium text-base leading-relaxed relative z-10 mt-4">
-                Por favor, ingresa tu nombre y haz clic en el botón para confirmar tu asistencia directamente por WhatsApp.
-            </p>
-            <input type="text" id="nombreAmigo" class="w-full p-4 rounded-xl border-2 border-[#BAC664] mb-6 text-center text-lg font-bold text-gray-700 focus:outline-none focus:border-[#728A2C] relative z-10" placeholder="Tu Nombre y Apellido">
+        <h2 class="text-2xl md:text-3xl text-gray-600 font-medium mb-10 relative z-10 font-serif italic">Completa tus datos para registrarte como acompañante.</h2>
+        
+        <div class="max-w-2xl mx-auto relative z-10 px-2">
             
-            <button onclick="confirmarPorWhatsApp()" class="w-full bg-olive text-white py-5 rounded-full uppercase tracking-widest text-sm font-bold hover:bg-[#5C7023] transition shadow-lg flex items-center justify-center gap-2 relative z-10">
-                <span>Confirmar Asistencia</span>
-                <span class="text-xl">›</span>
+            <div class="mb-5">
+                <label class="form-label">Nombres</label>
+                <input type="text" id="f_nombres" class="form-input" placeholder="Tus nombres">
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-5 mb-5">
+                <div class="w-full md:w-1/2">
+                    <label class="form-label">Apellido Paterno</label>
+                    <input type="text" id="f_apPaterno" class="form-input" placeholder="Apellido paterno">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label class="form-label">Apellido Materno</label>
+                    <input type="text" id="f_apMaterno" class="form-input" placeholder="Apellido materno">
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label class="form-label">Celular</label>
+                <input type="tel" id="f_celular" class="form-input" placeholder="987 654 321">
+                <p class="text-left text-[0.65rem] text-[#DE3566] ml-2 mt-1 font-semibold">9 dígitos. Te avisaremos por WhatsApp.</p>
+            </div>
+
+            <div class="mb-5">
+                <label class="form-label">Correo (Opcional)</label>
+                <input type="email" id="f_correo" class="form-input" placeholder="tu@correo.com">
+            </div>
+
+            <div class="mb-5">
+                <label class="form-label">Colegio</label>
+                <input type="text" id="f_colegio" class="form-input" placeholder="Colegio de procedencia">
+            </div>
+
+            <div class="mb-8">
+                <label class="form-label">¿Asistirás?</label>
+                <select id="f_asistencia" class="form-input cursor-pointer">
+                    <option value="Sí, asistiré">Sí, asistiré</option>
+                    <option value="No podré asistir">No podré asistir</option>
+                </select>
+            </div>
+
+            <button id="btnEnviar" onclick="enviarFormulario()" class="w-full bg-[#DE3566] text-white py-4 rounded-full uppercase tracking-widest text-[13px] font-bold hover:bg-[#b82a52] transition shadow-xl mt-4">
+                Enviar Confirmación
             </button>
-            <p class="mt-8 text-[11px] uppercase tracking-widest text-gray-500 font-bold relative z-10">Hasta el 31 de octubre</p>
+            
         </div>
     </section>
 
@@ -236,16 +255,58 @@
             setTimeout(() => { this.style.display = 'none'; }, 1000);
         });
 
-        function confirmarPorWhatsApp() {
-            const nombre = document.getElementById('nombreAmigo').value.trim();
-            if(!nombre) {
-                alert("Por favor, ingresa tu nombre antes de confirmar.");
+        function enviarFormulario() {
+            const nombres = document.getElementById('f_nombres').value.trim();
+            const apPaterno = document.getElementById('f_apPaterno').value.trim();
+            const apMaterno = document.getElementById('f_apMaterno').value.trim();
+            const celular = document.getElementById('f_celular').value.trim();
+            const correo = document.getElementById('f_correo').value.trim();
+            const colegio = document.getElementById('f_colegio').value.trim();
+            const asistencia = document.getElementById('f_asistencia').value;
+
+            if(!nombres || !apPaterno || !celular || !colegio) {
+                alert("Por favor, completa los nombres, apellido paterno, celular y colegio.");
                 return;
             }
-            const numeroDestino = "51914972428"; 
-            const mensaje = `Hola, mi nombre es ${nombre}, confirmo mi asistencia para tu fiesta ¡Muchas gracias por tu invitación!`;
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensaje)}`;
-            window.open(whatsappUrl, '_blank');
+
+            const btn = document.getElementById('btnEnviar');
+            btn.innerText = "ENVIANDO DATOS...";
+            btn.disabled = true;
+
+            // PEGA AQUÍ TU NUEVA URL DE APPS SCRIPT
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
+            
+            const formData = new FormData();
+            formData.append('nombres', nombres);
+            formData.append('apPaterno', apPaterno);
+            formData.append('apMaterno', apMaterno);
+            formData.append('celular', celular);
+            formData.append('correo', correo);
+            formData.append('colegio', colegio);
+            formData.append('asistencia', asistencia);
+
+            // Fetch a Google Sheets
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
+                .then(response => {
+                    const numeroDestino = "51914972428"; 
+                    let mensaje = "";
+                    if(asistencia === "Sí, asistiré") {
+                        mensaje = `¡Hola! Soy ${nombres} ${apPaterno}. Confirmo mi asistencia a tus XV años. Soy del colegio ${colegio}. ¡Gracias por la invitación!`;
+                    } else {
+                        mensaje = `¡Hola Maju! Soy ${nombres} ${apPaterno}. Agradezco mucho tu invitación, pero lamentablemente no podré asistir. ¡Espero que tengas un hermoso XV!`;
+                    }
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensaje)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    btn.innerText = "ENVIAR CONFIRMACIÓN";
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Hubo un problema de conexión. Intenta de nuevo.");
+                    btn.innerText = "ENVIAR CONFIRMACIÓN";
+                    btn.disabled = false;
+                });
         }
     </script>
 </body>
