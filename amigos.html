@@ -30,9 +30,8 @@
         .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: #FDFBF7;
+            border: 1px solid #728A2C;
             box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08);
         }
         
@@ -46,15 +45,9 @@
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        .disco-ball { position: absolute; top: -30px; right: -20px; width: 140px; pointer-events: none; z-index: 10; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-
         /* Animación para el icono de regalo */
         .bounce-gift { animation: bounce-gentle 2.5s infinite; }
         @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        /* Estilo para las flores decorativas */
-        .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; mix-blend-mode: multiply; }
     </style>
 </head>
 <body class="relative">
@@ -63,13 +56,9 @@
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
+    <!-- SOBRE VIRTUAL -->
     <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
         <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative overflow-hidden w-full max-w-sm">
-            
-            <!-- FLORES EN LA PANTALLA INICIAL (Opcional, pero se ve lindo) -->
-            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -top-6 -left-6 transform -rotate-12 opacity-60 pointer-events-none">
-            <img src="flores.png" onerror="this.style.display='none'" alt="" class="absolute w-40 -bottom-6 -right-6 transform rotate-180 opacity-60 pointer-events-none">
-
             <div class="relative z-10">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
                 <h1 class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Maju<br>Isabella</h1>
@@ -80,33 +69,53 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
+    <!-- SECCIÓN 1: DISEÑO EXACTO DE LA TARJETA -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
-        <!-- FLORES EN LAS ESQUINAS RESTAURADAS -->
-        <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -top-10 -left-10 transform -rotate-12">
-        <img src="flores.png" onerror="this.style.display='none'" alt="" class="floral-decor w-64 md:w-80 -bottom-10 -right-10 transform rotate-180">
+        <div class="glass-panel relative p-8 md:p-10 rounded-none max-w-lg w-full mt-10 z-10">
+            <!-- Doble borde interno -->
+            <div class="absolute inset-2 border-[1px] border-[#728A2C] opacity-50 pointer-events-none"></div>
 
-        <!-- BOLA DE DISCOTECA -->
-        <img src="https://cdn-icons-png.flaticon.com/512/8017/8017558.png" onerror="this.style.display='none'" alt="Disco" class="disco-ball">
-        
-        <div class="glass-panel p-8 md:p-10 rounded-3xl max-w-md w-full mt-10 relative overflow-hidden z-10 border-2 border-[#DE3566]/20">
-            <p class="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500 font-semibold">Birthday XV Party</p>
-            
-            <h1 class="font-script text-8xl md:text-9xl color-fuchsia leading-[0.7] mb-2 drop-shadow-sm">Maju</h1>
-            <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-8 font-serif drop-shadow-sm">Isabella</h1>
-            
-            <div class="w-full h-px bg-gray-300 mb-6"></div>
-            
-                       <p class="uppercase tracking-widest text-xs color-olive font-bold mt-8 mb-6">Celebremos juntos, los espero</p>
+            <!-- FLORES Y DISCO DESDE GITHUB -->
+            <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-36 md:w-44 pointer-events-none z-20">
+            <img src="disco.png" alt="Disco" class="absolute -top-4 -right-4 w-28 md:w-32 pointer-events-none z-20 drop-shadow-md">
 
-            <div class="flex items-center justify-center w-full mb-2 text-gray-700">
-                <div class="w-1/3 text-right pr-3 border-r border-[#BAC664]"><p class="uppercase text-[10px] font-bold tracking-widest leading-tight">Sábado<br>7 de</p></div>
-                <div class="w-1/3 text-center"><span class="text-6xl font-light color-olive leading-none">07</span></div>
-                <div class="w-1/3 text-left pl-3 border-l border-[#BAC664]"><p class="uppercase text-[10px] font-bold tracking-widest leading-tight">Noviembre<br>2026</p></div>
+            <div class="relative z-10 mt-6">
+                <p class="text-[10px] uppercase tracking-[0.3em] mb-4 text-[#728A2C] font-semibold">Birthday XV Party</p>
+                
+                <h1 class="font-script text-8xl md:text-9xl color-fuchsia leading-[0.7] mb-2 drop-shadow-sm">Maju</h1>
+                <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-1 font-serif drop-shadow-sm">Isabella</h1>
+                <p class="text-[10px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-bold">Marquina Valderrama</p>
+                
+                <div class="w-16 h-px bg-[#728A2C] mx-auto mb-6 opacity-50"></div>
+                
+                <p class="text-[0.95rem] md:text-base italic text-gray-700 leading-relaxed px-2 mb-6">
+                    Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable.<br><br>
+                    Te esperamos para acompañar a Maju Isabella en una noche muy especial, llena de música, emoción y recuerdos hermosos.
+                </p>
+
+                <div class="w-16 h-px bg-[#728A2C] mx-auto mb-4 opacity-50"></div>
+                <p class="uppercase tracking-widest text-[9px] md:text-[10px] color-olive font-bold mb-6">Celebremos juntos, los espero</p>
+
+                <!-- CUADRÍCULA DE DATOS CON ÍCONOS -->
+                <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-4">
+                    <!-- Calendario -->
+                    <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50">
+                        <svg class="w-6 h-6 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2z"></path></svg>
+                        <p class="uppercase text-[9px] font-bold tracking-widest leading-tight">Sábado<br>7 de<br>Noviembre</p>
+                    </div>
+                    <!-- Reloj -->
+                    <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50 flex flex-col justify-center h-full pt-1">
+                        <svg class="w-6 h-6 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p class="uppercase text-[10px] font-bold tracking-widest leading-tight">7:30 P. M.</p>
+                    </div>
+                    <!-- Mapa -->
+                    <div class="w-1/3 text-center px-1">
+                        <svg class="w-6 h-6 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="uppercase text-[7px] font-bold tracking-widest leading-tight">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
+                    </div>
+                </div>
             </div>
-            
-            <p class="text-lg italic mt-4 color-tangerine font-semibold">7:30 p.m.</p>
-            <p class="mt-2 text-[10px] uppercase tracking-widest text-gray-500 font-bold">Urb. Santa Sofía B-8<br>Challapampa, Cerro Colorado</p>
         </div>
     </section>
 
@@ -151,14 +160,11 @@
         <p class="mt-8 text-sm max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <!-- NUEVA SECCIÓN: REGALOS (CREATIVOS) -->
+    <!-- SECCIÓN: REGALOS (CREATIVOS) -->
     <section id="regalos" class="py-16 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
-        <!-- Gif animado de regalo (transparente) -->
         <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-4 bounce-gift opacity-90 drop-shadow-md">
-        
         <p class="uppercase tracking-[0.3em] text-[11px] color-tangerine font-bold mb-2">Un detalle especial</p>
         <h2 class="text-4xl font-script mb-6 color-fuchsia">Regalos</h2>
-        
         <div class="glass-panel p-8 rounded-[2rem] max-w-lg mx-auto shadow-md border-[2px] border-[#FF9B3D]/30">
             <p class="text-gray-700 font-medium text-[1.1rem] leading-relaxed italic">
                 "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
@@ -170,19 +176,16 @@
     <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-[0.3em] text-[11px] color-olive font-bold mb-2">Confirmación</p>
         <h2 class="text-5xl font-script mb-6 color-fuchsia">¡Te esperamos!</h2>
-        <div class="glass-panel p-8 rounded-[2rem] max-w-md mx-auto shadow-md border-[3px] border-[#BAC664]">
-            
+        <div class="glass-panel p-8 rounded-[2rem] max-w-md mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white">
             <p class="text-gray-700 mb-6 font-medium text-sm leading-relaxed">
                 Por favor, ingresa tu nombre y haz clic en el botón para confirmar tu asistencia directamente por WhatsApp.
             </p>
-
             <input type="text" id="nombreAmigo" class="w-full p-4 rounded-xl border-2 border-[#BAC664] mb-4 text-center font-bold text-gray-700 focus:outline-none focus:border-[#728A2C]" placeholder="Tu Nombre y Apellido">
             
             <button onclick="confirmarPorWhatsApp()" class="w-full bg-olive text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-[#5C7023] transition shadow-lg flex items-center justify-center gap-2">
                 <span>Confirmar Asistencia</span>
                 <span class="text-lg">›</span>
             </button>
-
             <p class="mt-6 text-[10px] uppercase tracking-widest text-gray-500 font-bold">Hasta el 31 de octubre</p>
         </div>
     </section>
@@ -234,7 +237,7 @@
                 alert("Por favor, ingresa tu nombre antes de confirmar.");
                 return;
             }
-            const numeroDestino = "51913271723"; 
+            const numeroDestino = "51914972428"; 
             const mensaje = `Hola, mi nombre es ${nombre}, confirmo mi asistencia para tu fiesta ¡Muchas gracias por tu invitación!`;
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensaje)}`;
             window.open(whatsappUrl, '_blank');
