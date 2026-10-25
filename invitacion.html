@@ -37,8 +37,9 @@
         .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
 
-        .bounce-gift { animation: bounce-gentle 2.5s infinite; }
-        @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* Nueva animación de movimiento para el ícono de regalo (wobble suave) */
+        .bounce-gift { animation: wobble-gentle 3s ease-in-out infinite; transform-origin: bottom center; }
+        @keyframes wobble-gentle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
         
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .float-disco { animation: float 5s ease-in-out infinite; }
@@ -73,7 +74,6 @@
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-30 mt-8">
-                <!-- Se ha incrementado el margen inferior (mb-10) para empujar "Maju" hacia abajo -->
                 <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-10 mt-4">Birthday XV Party</p>
                 
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
@@ -147,8 +147,8 @@
     </section>
 
     <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
-        <!-- Ícono de regalo actualizado a blanco y negro -->
-        <img src="https://cdn-icons-png.flaticon.com/512/5836/5836371.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
+        <!-- ÍCONO DE REGALO ACTUALIZADO AL ARCHIVO regalo.png -->
+        <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
         
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
         <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
@@ -163,7 +163,6 @@
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-20 pointer-events-none transform -rotate-45">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-20 pointer-events-none transform rotate-45">
 
-        <!-- Título actualizado -->
         <h2 class="text-2xl md:text-3xl text-gray-600 font-medium mb-10 relative z-10 font-serif italic">Completa tus datos para registrarte</h2>
         
         <div class="max-w-2xl mx-auto relative z-10 px-2">
