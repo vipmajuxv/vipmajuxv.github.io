@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Maju Isabella - Invitación</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
+        .font-script { font-family: 'Great Vibes', cursive; }
+        
+        /* Paleta Pantone */
+        .color-fuchsia { color: #DE3566; }
+        .bg-fuchsia { background-color: #DE3566; }
+        .color-tangerine { color: #FF9B3D; }
+        .bg-tangerine { background-color: #FF9B3D; }
+        .color-olive { color: #728A2C; }
+        .bg-olive { background-color: #728A2C; }
+
+        /* Colores del Dress Code Originales */
+        .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
+        .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
+        .bg-champagne { background-color: #E6D3B3; border: 1px solid #d1d5db; }
+        .bg-taupe { background-color: #A69889; border: 1px solid #9ca3af; }
+        .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
+        .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
+
+        .glass-panel {
+            background: #FDFBF7;
+            border: 1px solid #728A2C;
+            box-shadow: 0 8px 32px rgba(222, 53, 102, 0.08);
+        }
+        
+        .glass-panel-dark {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sparkle { position: absolute; pointer-events: none; z-index: 10; animation: twinkle linear infinite; }
+        @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(180deg); } 100% { opacity: 0; transform: scale(0.5) rotate(360deg); } }
+
+        /* Animación para el icono de regalo */
+        .bounce-gift { animation: bounce-gentle 2.5s infinite; }
+        @keyframes bounce-gentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        /* Animaciones para las esferas de luces */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+        .float-disco { animation: float 5s ease-in-out infinite; }
+        .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
+        .float-disco-slow { animation: float 7s ease-in-out infinite 0.5s; }
+    </style>
+</head>
+<body class="relative">
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
+    </audio>
+
+    <!-- SOBRE VIRTUAL -->
+    <div id="envelope-screen" class="fixed inset-0 bg-fuchsia z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
+        <div class="bg-[#FDFBF7] p-10 md:p-16 rounded-[2rem] text-center transform hover:scale-105 transition duration-500 shadow-2xl mx-6 border-4 border-white relative w-full max-w-sm">
+            
+            <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
+
+            <div class="relative z-10 mt-4">
+                <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV</p>
+                <h1 class="font-script text-7xl md:text-8xl color-fuchsia mb-10 leading-[0.8]">Maju<br>Isabella</h1>
+                <button class="bg-olive text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-lg">Abrir Invitación</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
+
+    <!-- SECCIÓN 1: DISEÑO EXACTO DE LA TARJETA -->
+    <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
+        
+        <div class="glass-panel relative p-6 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
+            <!-- Doble borde interno -->
+            <div class="absolute inset-3 border-[1.5px] border-[#728A2C] opacity-50 pointer-events-none"></div>
+
+            <!-- FLORES Y DISCO -->
+            <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-44 md:w-56 pointer-events-none z-20">
+            <!-- BOLA DE DISCOTECA -->
+            <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
+
+            <div class="relative z-10 mt-10">
+                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#728A2C] font-extrabold relative z-30 mb-2">Birthday XV Party</p>
+                
+                <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
+                <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
+                <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#728A2C] font-extrabold">Marquina Valderrama</p>
+                
+                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-5 opacity-60"></div>
+                
+                <p class="text-[1.05rem] md:text-lg italic text-gray-700 leading-snug px-2 mb-5 font-medium max-w-xs md:max-w-sm mx-auto">
+                    Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial, llena de música, emoción y recuerdos hermosos.
+                </p>
+
+                <div class="w-20 h-[1.5px] bg-[#728A2C] mx-auto mb-4 opacity-60"></div>
+                <p class="uppercase tracking-[0.2em] text-[11px] md:text-[13px] color-olive font-extrabold mb-6">Celebremos juntos, los espero</p>
+
+                <div class="flex items-start justify-between w-full text-gray-700 mt-2 border-t border-b border-[#BAC664]/50 py-4">
+                    <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50">
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2z"></path></svg>
+                        <p class="uppercase text-[11px] md:text-[13px] font-extrabold tracking-widest leading-[1.2]">Sábado<br>7 de<br>Noviembre</p>
+                    </div>
+                    <div class="w-1/3 text-center px-1 border-r border-[#BAC664]/50 flex flex-col justify-center h-full pt-1">
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p class="uppercase text-[13px] md:text-[15px] font-extrabold tracking-widest leading-[1.2] mt-1">7:30 P. M.</p>
+                    </div>
+                    <div class="w-1/3 text-center px-1">
+                        <svg class="w-7 h-7 mx-auto mb-2 text-[#728A2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="uppercase text-[9px] md:text-[10px] font-extrabold tracking-widest leading-[1.1]">Urbanización<br>Santa Sofía B-8<br>Challapampa<br>Cerro Colorado<br>Arequipa, 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 text-center bg-fuchsia">
+        <h2 class="text-4xl md:text-5xl italic mb-6 text-white font-script">Falta poco</h2>
+        <div class="glass-panel-dark p-6 rounded-2xl inline-block border border-white/40">
+            <div class="flex gap-4 md:gap-8 justify-center text-center text-white">
+                <div><span id="days" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[12px] uppercase tracking-widest text-white/90 font-bold">días</span></div>
+                <div><span id="hours" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[12px] uppercase tracking-widest text-white/90 font-bold">horas</span></div>
+                <div><span id="mins" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[12px] uppercase tracking-widest text-white/90 font-bold">minutos</span></div>
+                <div><span id="secs" class="text-4xl md:text-5xl block font-light">00</span><span class="text-[12px] uppercase tracking-widest text-white/90 font-bold">segundos</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 text-center bg-[#FDFBF7]">
+        <p class="uppercase tracking-widest text-[13px] color-olive font-bold mb-2">Dónde</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 color-fuchsia">Urb. Santa Sofía B-8</h2>
+        <p class="max-w-md mx-auto mb-8 text-gray-700 text-base font-bold">Challapampa, Cerro Colorado, Arequipa<br>7:30 p.m.</p>
+        <div>
+            <a href="https://www.google.com/maps/search/?api=1&query=-16.386789,-71.562056" target="_blank" class="inline-block px-10 py-4 bg-tangerine text-white rounded-full uppercase tracking-[0.2em] text-sm hover:bg-[#E68A36] transition shadow-lg font-bold">Ver ubicación en el Mapa</a>
+        </div>
+    </section>
+
+    <section id="vestimenta" class="py-20 px-6 text-center bg-olive text-white relative overflow-hidden">
+        <p class="uppercase tracking-[0.3em] text-[13px] text-white/90 font-bold mb-3">Código de Vestimenta</p>
+        <h2 class="text-5xl font-bold mb-8 text-white">Cocktail</h2>
+        <p class="max-w-md mx-auto mb-10 text-lg italic text-white/95">Tonos elegidos para la noche.</p>
+        
+        <div class="flex flex-wrap justify-center gap-6 md:gap-8 max-w-2xl mx-auto mb-10">
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-white" style="border: 1px solid #ccc;"></span><p class="text-sm text-white mt-2">Blanco</p></div>
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-ivory"></span><p class="text-sm text-white mt-2">Marfil</p></div>
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-sand"></span><p class="text-sm text-white mt-2">Beige arena</p></div>
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-champagne"></span><p class="text-sm text-white mt-2">Champán</p></div>
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-taupe"></span><p class="text-sm text-white mt-2">Taupe</p></div>
+            <div class="text-center"><span class="color-circle w-12 h-12 bg-silver"></span><p class="text-sm text-white mt-2">Plateado suave</p></div>
+        </div>
+        <div class="text-center mt-6">
+            <span class="color-circle w-12 h-12 bg-black-teen border-2 border-white/50"></span><p class="text-sm font-bold text-white mt-2">Negro: solo caballeros</p>
+        </div>
+        <p class="mt-8 text-base max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
+    </section>
+
+    <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
+        <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" alt="Regalo" class="w-24 md:w-28 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-md">
+        <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
+        <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
+        <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
+            <p class="text-gray-700 font-bold text-[1.2rem] md:text-xl leading-relaxed italic">
+                "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
+            </p>
+        </div>
+    </section>
+
+    <section id="rsvp" class="py-24 px-6 text-center bg-[#FDFBF7]">
+        <p class="uppercase tracking-[0.3em] text-[13px] color-olive font-bold mb-3">Confirmación</p>
+        <h2 class="text-6xl font-script mb-8 color-fuchsia">¡Te esperamos!</h2>
+        <div class="glass-panel p-10 rounded-[2rem] max-w-lg mx-auto shadow-md border-[3px] border-[#BAC664] !bg-white relative">
+            
+            <img src="disco.png" alt="Disco" class="absolute -top-10 -right-6 w-24 md:w-32 pointer-events-none z-20 drop-shadow-lg float-disco-slow">
+
+            <p class="text-gray-700 mb-8 font-medium text-base leading-relaxed relative z-10 mt-4">
+                Por favor, ingresa tu nombre y haz clic en el botón para confirmar tu asistencia directamente por WhatsApp.
+            </p>
+            <input type="text" id="nombreAmigo" class="w-full p-4 rounded-xl border-2 border-[#BAC664] mb-6 text-center text-lg font-bold text-gray-700 focus:outline-none focus:border-[#728A2C] relative z-10" placeholder="Tu Nombre y Apellido">
+            
+            <button onclick="confirmarPorWhatsApp()" class="w-full bg-olive text-white py-5 rounded-full uppercase tracking-widest text-sm font-bold hover:bg-[#5C7023] transition shadow-lg flex items-center justify-center gap-2 relative z-10">
+                <span>Confirmar Asistencia</span>
+                <span class="text-xl">›</span>
+            </button>
+            <p class="mt-8 text-[11px] uppercase tracking-widest text-gray-500 font-bold relative z-10">Hasta el 31 de octubre</p>
+        </div>
+    </section>
+
+    <footer class="text-center py-10 text-[11px] uppercase tracking-[0.2em] font-bold text-[#FDFBF7] bg-[#2E3B32]">
+        <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
+    </footer>
+
+    <script>
+        function createSparkles() { 
+            const container = document.getElementById('petals-container'); 
+            const colors = ['#DE3566', '#FF9B3D', '#FCCC60', '#BAC664']; 
+            for (let i = 0; i < 25; i++) { 
+                let p = document.createElement('div'); 
+                p.className = 'sparkle'; 
+                p.style.left = Math.random() * 100 + 'vw'; 
+                p.style.top = Math.random() * 100 + 'vh';
+                p.style.width = (Math.random() * 10 + 10) + 'px'; 
+                p.style.height = p.style.width; 
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; 
+                p.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+                p.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                p.style.animationDelay = Math.random() * 3 + 's'; 
+                container.appendChild(p); 
+            } 
+        } 
+        createSparkles();
+
+        const eventDate = new Date('Nov 7, 2026 19:30:00').getTime(); 
+        setInterval(() => { 
+            const now = new Date().getTime(); const distance = eventDate - now; 
+            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'); 
+            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'); 
+            document.getElementById('mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'); 
+            document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); 
+        }, 1000);
+
+        document.getElementById('envelope-screen').addEventListener('click', function() {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.5;
+            audio.play().catch(e => console.log("Audio autoplay bloqueado por el navegador"));
+            this.style.opacity = '0';
+            setTimeout(() => { this.style.display = 'none'; }, 1000);
+        });
+
+        function confirmarPorWhatsApp() {
+            const nombre = document.getElementById('nombreAmigo').value.trim();
+            if(!nombre) {
+                alert("Por favor, ingresa tu nombre antes de confirmar.");
+                return;
+            }
+            const numeroDestino = "51914972428"; 
+            const mensaje = `Hola, mi nombre es ${nombre}, confirmo mi asistencia para tu fiesta ¡Muchas gracias por tu invitación!`;
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroDestino}&text=${encodeURIComponent(mensaje)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
