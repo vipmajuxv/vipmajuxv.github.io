@@ -12,16 +12,13 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
-        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-fuchsia { background-color: #DE3566; }
         .color-tangerine { color: #FF9B3D; }
         .bg-tangerine { background-color: #FF9B3D; }
-        /* Nuevo Verde: Pantone Apple Green 15-0543 TCX */
         .color-olive { color: #9CA83D; }
         .bg-olive { background-color: #9CA83D; }
 
-        /* Colores del Dress Code */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -69,16 +66,16 @@
 
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
-        <div class="glass-panel relative p-6 md:p-10 rounded-none max-w-xl w-full mt-10 z-10">
+        <div class="glass-panel relative px-6 py-12 md:px-10 md:py-16 rounded-none max-w-xl w-full mt-10 z-10">
             <div class="absolute inset-3 border-[1.5px] border-[#9CA83D] opacity-50 pointer-events-none"></div>
 
-            <!-- Flores en Z-20 -->
             <img src="flores.png" alt="Flores" class="absolute -top-6 -left-6 w-44 md:w-56 pointer-events-none z-20">
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
-            <!-- Capa de texto elevada a Z-30 para no ser tapada por las flores -->
-            <div class="relative z-30 mt-10">
-                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-2">Birthday XV Party</p>
+            <div class="relative z-30 mt-8">
+                <!-- Se ha incrementado el margen inferior (mb-10) para empujar "Maju" hacia abajo -->
+                <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-10 mt-4">Birthday XV Party</p>
+                
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
                 <h1 class="text-5xl md:text-6xl text-[#2E3B32] mb-3 font-serif drop-shadow-sm leading-[0.8]">Isabella</h1>
                 <p class="text-[10px] md:text-[12px] uppercase tracking-[0.3em] mb-6 text-[#9CA83D] font-extrabold">Marquina Valderrama</p>
@@ -150,8 +147,8 @@
     </section>
 
     <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#DE3566]/10">
-        <!-- Ícono de regalo en Blanco y Negro -->
-        <img src="https://cdn-icons-png.flaticon.com/512/285/285090.png" alt="Regalo" class="w-16 md:w-20 mx-auto mb-6 bounce-gift opacity-80">
+        <!-- Ícono de regalo actualizado a blanco y negro -->
+        <img src="https://cdn-icons-png.flaticon.com/512/5836/5836371.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
         
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
         <h2 class="text-6xl font-script mb-8 color-fuchsia">Regalos</h2>
@@ -166,7 +163,8 @@
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-20 pointer-events-none transform -rotate-45">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-20 pointer-events-none transform rotate-45">
 
-        <h2 class="text-2xl md:text-3xl text-gray-600 font-medium mb-10 relative z-10 font-serif italic">Completa tus datos para registrarte como acompañante.</h2>
+        <!-- Título actualizado -->
+        <h2 class="text-2xl md:text-3xl text-gray-600 font-medium mb-10 relative z-10 font-serif italic">Completa tus datos para registrarte</h2>
         
         <div class="max-w-2xl mx-auto relative z-10 px-2">
             
