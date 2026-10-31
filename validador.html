@@ -31,7 +31,9 @@
         </div>
         
         <!-- Área de la cámara -->
-        <div class="flex-1 w-full bg-black relative" id="reader"></div>
+        <div class="flex-1 w-full bg-black relative flex items-center justify-center overflow-hidden" id="reader-container">
+            <div id="reader" class="w-full max-w-md"></div>
+        </div>
         
         <!-- Controles inferiores -->
         <div class="bg-gray-900 p-4 border-t border-gray-800 text-center z-10">
@@ -52,7 +54,7 @@
 
         <p id="result-message" class="text-lg mb-10 font-medium opacity-90 max-w-sm px-4">-</p>
 
-        <!-- Botón Salida (Solo aparece si el pase ya había ingresado) -->
+        <!-- Botón Salida -->
         <button id="btn-salida" onclick="registrarSalida()" class="hidden w-full max-w-sm border-2 border-white text-white bg-black/40 py-4 rounded-xl font-bold uppercase tracking-widest mb-4 hover:bg-white/20 transition">
             🚶 Registrar Salida
         </button>
@@ -66,9 +68,8 @@
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
         let currentPin = '';
         let lastScannedQR = '';
-        let html5QrcodeScanner;
+        let html5QrCode;
 
-        // Recuperar PIN si ya había ingresado
         if(localStorage.getItem('puertaPin')) {
             document.getElementById('pinInput').value = localStorage.getItem('puertaPin');
         }
@@ -77,23 +78,31 @@
             currentPin = document.getElementById('pinInput').value.trim();
             if(!currentPin) return alert("Ingresa el PIN");
             
-            localStorage.setItem('puertaPin', currentPin); // Guarda el pin en el navegador
+            localStorage.setItem('puertaPin', currentPin);
 
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('scanner-screen').classList.remove('hidden');
             
-            // Iniciar librería HTML5-QRCode
-            html5QrcodeScanner = new Html5QrcodeScanner(
-                "reader", { fps: 10, qrbox: {width: 250, height: 250}, aspectRatio: 1.0 });
-            html5QrcodeScanner.render(onScanSuccess);
+            // Iniciar cámara trasera automáticamente
+            html5QrCode = new Html5Qrcode("reader");
+            const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+            
+            html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess)
+            .catch(err => {
+                console.error("Error al iniciar cámara", err);
+                alert("⚠️ No se pudo acceder a la cámara. Por favor, asegúrate de haber dado permisos en tu navegador (Configuración > Configuración de sitios > Cámara > Permitir).");
+            });
         }
 
         function onScanSuccess(decodedText, decodedResult) {
-            // Evitar escanear el mismo código 10 veces en un segundo
             if (decodedText === lastScannedQR) return; 
             
             lastScannedQR = decodedText;
-            html5QrcodeScanner.pause(true); // Pausar cámara mientras se consulta
+            
+            // Pausar el escáner al detectar QR
+            if (html5QrCode.getState() === 2) { 
+                html5QrCode.pause();
+            }
 
             mostrarPantalla('bg-blue-600', '⏳', 'Procesando...', 'Consultando base de datos', '', '');
             
@@ -113,17 +122,13 @@
                     }
                 } else {
                     if(data.status === 'ALLOWED') {
-                        // INGRESO ÉXITOSO (VERDE)
                         mostrarPantalla('bg-green-600', '✅', 'ACCESO PERMITIDO', '¡Bienvenido!', data.nombre, data.tipo);
                     } else if (data.status === 'ALREADY_ENTERED') {
-                        // YA INGRESÓ (AMARILLO)
                         mostrarPantalla('bg-yellow-500', '⚠️', 'PASE YA USADO', 'Este invitado ingresó a las: ' + data.hora, data.nombre, 'ADENTRO');
-                        document.getElementById('btn-salida').classList.remove('hidden'); // Mostrar botón de salida
+                        document.getElementById('btn-salida').classList.remove('hidden'); 
                     } else if (data.status === 'NOT_FOUND') {
-                        // NO EXISTE (ROJO)
                         mostrarPantalla('bg-red-600', '🚫', 'PASE INVÁLIDO', 'El código QR no existe o fue cancelado.', 'Desconocido', '-');
                     } else if (data.status === 'EXIT_REGISTERED') {
-                        // SALIDA OK (VERDE CLARO)
                         mostrarPantalla('bg-emerald-500', '👋', 'SALIDA REGISTRADA', 'El invitado puede volver a ingresar.', data.nombre, 'SALIÓ');
                     }
                 }
@@ -153,16 +158,12 @@
 
         function mostrarPantalla(bgColor, icon, title, message, name, type) {
             const overlay = document.getElementById('result-overlay');
-            // Limpiar colores anteriores
             overlay.className = 'absolute inset-0 z-50 flex flex-col items-center justify-center p-6 text-center transform transition-all duration-300 ' + bgColor;
-            
             document.getElementById('result-icon').innerText = icon;
             document.getElementById('result-title').innerText = title;
             document.getElementById('result-message').innerText = message;
-            
             document.getElementById('result-name').innerText = name || '-';
             document.getElementById('result-type').innerText = type || '';
-            
             overlay.classList.remove('hidden');
         }
 
@@ -171,9 +172,8 @@
             document.getElementById('btn-salida').classList.add('hidden');
             lastScannedQR = '';
             
-            // Reanudar cámara
-            if(html5QrcodeScanner) {
-                html5QrcodeScanner.resume();
+            if(html5QrCode && html5QrCode.getState() === 3) { 
+                html5QrCode.resume();
             }
         }
     </script>
