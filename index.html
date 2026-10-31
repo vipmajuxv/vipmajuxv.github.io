@@ -14,15 +14,12 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
-        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-soft-pink { background-color: #EA657A; } 
         .color-tangerine { color: #FF9B3D; }
-        .bg-tangerine { background-color: #FF9B3D; }
         .color-olive { color: #9CA83D; }
         .bg-olive { background-color: #9CA83D; }
 
-        /* Colores del Dress Code */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -31,65 +28,33 @@
         .bg-silver { background-color: #C5C7CB; border: 1px solid #9ca3af; }
         .bg-black-teen { background-color: #141414; border: 1px solid #374151; }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        }
+        .glass-panel { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
+        .glass-panel-dark { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
         
-        .glass-panel-dark {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
         .petal { position: fixed; top: -10%; z-index: -1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { 0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; } }
         
         .hidden-step { display: none; }
-        
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 4px; }
-        .ribbon {
-            position: absolute;
-            background: #8CA38D;
-            color: white;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-            padding: 4px 40px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .ribbon-top-left { top: 20px; left: -35px; transform: rotate(-45deg); }
-        .ribbon-top-right { top: 20px; right: -35px; transform: rotate(45deg); }
         
-        .floral-decor {
-            position: absolute;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.85;
-            mix-blend-mode: multiply;
-        }
-
+        .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.85; mix-blend-mode: multiply; }
+        
         .bounce-gift { animation: wobble-gentle 3s ease-in-out infinite; transform-origin: bottom center; }
         @keyframes wobble-gentle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
-        
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .float-disco { animation: float 5s ease-in-out infinite; }
         .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
     </style>
 </head>
 <body class="relative">
-    <!-- REPRODUCTOR DE AUDIO -->
     <audio id="bg-music" loop preload="auto">
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL -->
-    <div id="envelope-screen" class="fixed inset-0 bg-soft-pink z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
+    <!-- SOBRE VIRTUAL (Se agregó onclick="abrirSobre()" para hacerlo 100% funcional) -->
+    <div id="envelope-screen" onclick="abrirSobre()" class="fixed inset-0 bg-soft-pink z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
         
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-25 pointer-events-none transform -rotate-45 z-0">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-25 pointer-events-none transform rotate-45 z-0">
@@ -99,7 +64,7 @@
             <div class="relative z-10 mt-4">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV Maju</p>
                 <h1 id="envelope-greeting" class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Hola...</h1>
-                <button class="bg-olive text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-lg">Abrir Pases</button>
+                <button class="bg-olive text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-lg" onclick="abrirSobre(); event.stopPropagation();">Abrir Invitación</button>
             </div>
         </div>
     </div>
@@ -116,6 +81,7 @@
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-30 mt-8">
+                <!-- Se ajustó el margen superior e inferior para evitar cruces de texto -->
                 <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-10 mt-4">Birthday XV Party</p>
                 
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
@@ -125,7 +91,7 @@
                 <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-5 opacity-60"></div>
                 
                 <p id="hero-greeting" class="text-[1.05rem] md:text-lg italic text-gray-700 leading-snug px-2 mb-5 font-medium max-w-xs md:max-w-sm mx-auto">
-                    ¡Hola!
+                    ¡Hola! Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial.
                 </p>
 
                 <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-4 opacity-60"></div>
@@ -216,7 +182,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 6: UN DETALLE CON CARIÑO (REGALOS Y CUENTAS) - SE OCULTA SEGÚN URL -->
+    <!-- SECCIÓN 6: UN DETALLE CON CARIÑO (REGALOS Y CUENTAS BANCARIAS) - SE OCULTA SI ES AMIGO -->
     <section id="seccion-cuentas" class="py-20 px-6 text-center bg-[#FDFBF7] relative overflow-hidden border-t border-[#9CA83D]/20 hidden">
         <div class="relative z-10 max-w-lg mx-auto">
             <h2 class="text-6xl font-script mb-2 text-[#2E3B32]">Gracias</h2>
@@ -228,7 +194,6 @@
                         <p class="font-bold text-lg text-[#2E3B32] mb-1">BCP &middot; SOLES</p>
                         <p class="text-sm text-gray-600 font-medium">Sandra Valderrama Cornejo</p>
                     </div>
-                    
                     <div class="bg-white/60 p-4 rounded-xl border border-[#9CA83D]/30">
                         <p class="text-[10px] uppercase tracking-widest text-[#9CA83D] font-bold mb-1">N.º de cuenta</p>
                         <p class="text-lg font-semibold text-gray-800 tracking-wider">21570788443072</p>
@@ -242,10 +207,9 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 7: REGALOS (SOLO AMIGOS) - SE MUESTRA SEGÚN URL -->
+    <!-- SECCIÓN 7: REGALOS (SOLO PARA AMIGOS) - SE MUESTRA SI ES AMIGO -->
     <section id="seccion-regalos-amigos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#EA657A]/10 hidden">
         <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
-        
         <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
         <h2 class="text-6xl font-script mb-8" style="color: #EA657A;">Regalos</h2>
         <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
@@ -258,6 +222,7 @@
     <!-- SECCIÓN 8: INTERACTIVOS (PLAYLIST Y FOTOS) -->
     <section class="py-16 w-full bg-[#9CA83D]">
         <div class="px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
+            <!-- Playlist -->
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Playlist</p>
                 <h2 class="text-4xl mb-4 font-script text-white">La música</h2>
@@ -270,6 +235,7 @@
                 </div>
             </div>
             
+            <!-- Galería de Fotos -->
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Álbum colaborativo</p>
                 <h2 class="text-4xl mb-4 font-script text-white">Galería de Fotos</h2>
@@ -319,16 +285,14 @@
             document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); 
         }, 1000);
 
-        // -------------------------------------------------------------
-        // ⚠️ PEGA AQUÍ LA URL DE TU APPS SCRIPT
-        // -------------------------------------------------------------
+        // URL DEL SCRIPT
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
         
         const urlParams = new URLSearchParams(window.location.search);
         const familiaId = urlParams.get('id') || '';
-        const tipo = urlParams.get('tipo'); // Obtenemos el parámetro 'tipo'
+        const tipo = urlParams.get('tipo');
 
-        // Lógica para mostrar/ocultar secciones basada en el parámetro 'tipo'
+        // Lógica de Mostrar u Ocultar Regalos/Cuenta según el tipo (Amigo vs Familiar)
         document.addEventListener("DOMContentLoaded", function() {
             const seccionCuentas = document.getElementById('seccion-cuentas');
             const seccionRegalos = document.getElementById('seccion-regalos-amigos');
@@ -342,7 +306,6 @@
             }
         });
 
-        // Variables globales
         let familyMembers = [];
         let nombreUsuario = ""; 
         const formatName = (str) => {
@@ -350,16 +313,17 @@
             return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
         };
 
-        // PLAY MUSICAL
-        document.getElementById('envelope-screen').addEventListener('click', function() {
+        // FUNCIÓN ABRIR SOBRE (Infalible, aplicada directo al onclick)
+        function abrirSobre() {
+            const sobre = document.getElementById('envelope-screen');
             const audio = document.getElementById('bg-music');
             audio.volume = 0.5;
             audio.play().catch(e => console.log("Audio autoplay bloqueado por el navegador"));
-            this.style.opacity = '0';
-            setTimeout(() => { this.style.display = 'none'; }, 1000);
-        });
+            sobre.style.opacity = '0';
+            setTimeout(() => { sobre.style.display = 'none'; }, 1000);
+        }
 
-        // CARGAR DATOS DE INVITADOS
+        // CARGA DE DATOS DESDE APPS SCRIPT
         document.addEventListener("DOMContentLoaded", () => {
             cargarDatosInteractivos();
             if(!familiaId) {
