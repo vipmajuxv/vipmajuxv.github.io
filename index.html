@@ -14,12 +14,14 @@
         body { font-family: 'Cormorant Garamond', serif; background-color: #FDFBF7; color: #2E3B32; overflow-x: hidden; scroll-behavior: smooth; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
+        /* Paleta Pantone */
         .color-fuchsia { color: #DE3566; }
         .bg-soft-pink { background-color: #EA657A; } 
         .color-tangerine { color: #FF9B3D; }
         .color-olive { color: #9CA83D; }
         .bg-olive { background-color: #9CA83D; }
 
+        /* Colores del Dress Code */
         .color-circle { width: 40px; height: 40px; border-radius: 50%; display: inline-block; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .bg-ivory { background-color: #F3EBDD; border: 1px solid #e5e7eb; }
         .bg-sand { background-color: #D8C3A5; border: 1px solid #d1d5db; }
@@ -41,19 +43,20 @@
         
         .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.85; mix-blend-mode: multiply; }
         
+        .bounce-gift { animation: wobble-gentle 3s ease-in-out infinite; transform-origin: bottom center; }
+        @keyframes wobble-gentle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .float-disco { animation: float 5s ease-in-out infinite; }
         .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
     </style>
 </head>
 <body class="relative">
-    
     <audio id="bg-music" loop preload="auto">
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
+    <!-- SOBRE VIRTUAL -->
     <div id="envelope-screen" onclick="abrirSobre()" class="fixed inset-0 bg-soft-pink z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
-        
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-25 pointer-events-none transform -rotate-45 z-0">
         <img src="flores.png" alt="Flores" class="absolute top-20 -right-20 w-96 opacity-25 pointer-events-none transform rotate-45 z-0">
         
@@ -61,7 +64,6 @@
             <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
             <div class="relative z-10 mt-4">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV Maju</p>
-                <!-- Saludo Dinámico -->
                 <h1 id="envelope-greeting" class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Hola...</h1>
                 <button class="bg-olive text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-lg" onclick="abrirSobre(); event.stopPropagation();">Abrir Invitación</button>
             </div>
@@ -70,8 +72,8 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
+    <!-- SECCIÓN 1: INICIO -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
-        
         <div class="glass-panel relative px-6 py-12 md:px-10 md:py-16 rounded-none max-w-xl w-full mt-10 z-10">
             <div class="absolute inset-3 border-[1.5px] border-[#9CA83D] opacity-50 pointer-events-none"></div>
 
@@ -79,6 +81,7 @@
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-30 mt-8">
+                <!-- Se ajustó el margen superior e inferior para evitar cruces de texto -->
                 <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-10 mt-4">Birthday XV Party</p>
                 
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
@@ -87,7 +90,6 @@
                 
                 <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-5 opacity-60"></div>
                 
-                <!-- Saludo Hero Dinámico -->
                 <p id="hero-greeting" class="text-[1.05rem] md:text-lg italic text-gray-700 leading-snug px-2 mb-5 font-medium max-w-xs md:max-w-sm mx-auto">
                     ¡Hola! Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial.
                 </p>
@@ -113,7 +115,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: CUENTA REGRESIVA (FUNCIONAL) -->
+    <!-- SECCIÓN 2: CUENTA REGRESIVA -->
     <section class="py-12 px-6 text-center bg-soft-pink">
         <h2 class="text-4xl md:text-5xl italic mb-6 text-white font-script">Falta poco</h2>
         <div class="glass-panel-dark p-6 rounded-2xl inline-block border border-white/40">
@@ -139,7 +141,6 @@
         <p class="uppercase tracking-[0.3em] text-[13px] text-white/90 font-bold mb-3">Código de Vestimenta</p>
         <h2 class="text-5xl font-bold mb-8 text-white">Cocktail</h2>
         <p class="max-w-md mx-auto mb-10 text-lg italic text-white/95">Tonos elegidos para la noche.</p>
-        
         <div class="flex flex-wrap justify-center gap-6 md:gap-8 max-w-2xl mx-auto mb-10">
             <div class="text-center"><span class="color-circle w-12 h-12 bg-white" style="border: 1px solid #ccc;"></span><p class="text-sm text-white mt-2">Blanco</p></div>
             <div class="text-center"><span class="color-circle w-12 h-12 bg-ivory"></span><p class="text-sm text-white mt-2">Marfil</p></div>
@@ -154,13 +155,24 @@
         <p class="mt-8 text-base max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <!-- SECCIÓN DE PASES (Oculta la sección de Regalo y Banco como lo pediste) -->
+    <!-- SECCIÓN DE REGALOS -->
+    <section id="regalos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#EA657A]/10">
+        <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
+        
+        <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
+        <h2 class="text-6xl font-script mb-8" style="color: #EA657A;">Regalos</h2>
+        <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
+            <p class="text-gray-700 font-bold text-[1.2rem] md:text-xl leading-relaxed italic">
+                "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
+            </p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE PASES VIP -->
     <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Acceso</p>
         <h2 class="text-4xl font-semibold mb-6 text-[#9CA83D]">Tus Pases VIP</h2>
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
-            
-            <!-- PASO 1 -->
             <div id="step-1">
                 <h3 id="familia-title" class="text-3xl mb-2 font-script color-fuchsia">Cargando tus pases...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">
@@ -172,7 +184,6 @@
                 <button id="btn-confirmar" onclick="confirmarYGenerar()" class="w-full bg-[#9CA83D] text-white py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8CA38D] transition shadow-md hidden">Generar Pases</button>
             </div>
             
-            <!-- PASO 2: LOS TICKETS -->
             <div id="step-2" class="hidden-step text-center">
                 <h3 class="text-3xl font-script color-fuchsia mb-2">¡Pases Generados!</h3>
                 <p class="text-sm mb-8 text-gray-600">Descarga y presenta cada pase en la puerta del evento.</p>
@@ -181,10 +192,10 @@
         </div>
     </section>
 
-    <!-- SECCIÓN INTERACTIVA (FUNCIONAL) -->
+    <!-- SECCIÓN INTERACTIVA (PLAYLIST Y FOTOS) -->
     <section class="py-16 w-full bg-[#9CA83D]">
         <div class="px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
-            
+            <!-- Playlist -->
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Playlist</p>
                 <h2 class="text-4xl mb-4 font-script text-white">La música</h2>
@@ -196,7 +207,7 @@
                     <button id="btn-pedir-cancion" onclick="pedirCancion()" class="w-full bg-[#EA657A] text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-[#d6576b] transition shadow-md">🎵 Pedir Canción</button>
                 </div>
             </div>
-            
+            <!-- Galería de Fotos -->
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Álbum colaborativo</p>
                 <h2 class="text-4xl mb-4 font-script text-white">Galería de Fotos</h2>
@@ -216,8 +227,9 @@
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT COMPLETAMENTE RESTAURADA -->
+    <!-- LÓGICA JAVASCRIPT -->
     <script>
+        // Animación Pétalos
         function createPetals() { 
             const container = document.getElementById('petals-container'); 
             const colors = ['#EA657A', '#FF9B3D', '#FCCC60', '#9CA83D']; 
@@ -237,7 +249,7 @@
         } 
         createSparkles();
 
-        // TIMER RESTAURADO
+        // Cuenta Regresiva
         const eventDate = new Date('Nov 7, 2026 19:30:00').getTime(); 
         setInterval(() => { 
             const now = new Date().getTime(); const distance = eventDate - now; 
@@ -247,7 +259,20 @@
             document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); 
         }, 1000);
 
-        // FUNCIONES ABRIR SOBRE Y AUDIO
+        // URL DE APPS SCRIPT (Reemplazar si es necesario)
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const familiaId = urlParams.get('id') || '';
+
+        let familyMembers = [];
+        let nombreUsuario = ""; 
+        const formatName = (str) => {
+            if(!str) return "";
+            return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
+        };
+
+        // PLAY MUSICAL AL ABRIR EL SOBRE
         function abrirSobre() {
             const sobre = document.getElementById('envelope-screen');
             const audio = document.getElementById('bg-music');
@@ -257,22 +282,7 @@
             setTimeout(() => { sobre.style.display = 'none'; }, 1000);
         }
 
-        // ==========================================
-        // URL DEL SCRIPT (¡AQUÍ VA TU URL REAL!)
-        // ==========================================
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const familiaId = urlParams.get('id') || '';
-        
-        let familyMembers = [];
-        let nombreUsuario = ""; 
-        const formatName = (str) => {
-            if(!str) return "";
-            return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
-        };
-
-        // CARGAR BASE DE DATOS Y DETERMINAR NOMBRE INTELIGENTE
+        // CARGA DE DATOS DESDE APPS SCRIPT
         document.addEventListener("DOMContentLoaded", () => {
             cargarDatosInteractivos();
             
@@ -288,7 +298,6 @@
                 if (data.success && data.miembros.length > 0) {
                     familyMembers = data.miembros;
                     
-                    // --- LÓGICA DE NOMBRE: INDIVIDUAL O FAMILIA ---
                     if (familyMembers.length === 1) {
                         let primerNombre = familyMembers[0].nombre.split(' ')[0];
                         nombreUsuario = formatName(primerNombre);
@@ -321,7 +330,7 @@
             });
         });
 
-        // ------------------ INTERACTIVOS RESTAURADOS ------------------
+        // FUNCIONES DE INTERACTIVIDAD (Playlist y Fotos)
         function cargarDatosInteractivos() {
             fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPlaylist' }) })
             .then(res => res.json())
