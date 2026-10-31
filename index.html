@@ -41,19 +41,17 @@
         
         .floral-decor { position: absolute; pointer-events: none; z-index: 0; opacity: 0.85; mix-blend-mode: multiply; }
         
-        .bounce-gift { animation: wobble-gentle 3s ease-in-out infinite; transform-origin: bottom center; }
-        @keyframes wobble-gentle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         .float-disco { animation: float 5s ease-in-out infinite; }
         .float-disco-alt { animation: float 6s ease-in-out infinite 1s; }
     </style>
 </head>
 <body class="relative">
+    
     <audio id="bg-music" loop preload="auto">
         <source src="https://www.dropbox.com/scl/fi/i3hc1fh36204vcyry1o7w/Dua-Lipa-Calvin-Harris-One-Kiss-Instrumental-Official-Instrumentals.mp3?rlkey=vcnttx3yqis22zwwmc796vczy&st=vgx2y2mc&raw=1" type="audio/mpeg">
     </audio>
 
-    <!-- SOBRE VIRTUAL (Se agregó onclick="abrirSobre()" para hacerlo 100% funcional) -->
     <div id="envelope-screen" onclick="abrirSobre()" class="fixed inset-0 bg-soft-pink z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000 overflow-hidden">
         
         <img src="flores.png" alt="Flores" class="absolute -bottom-20 -left-20 w-80 opacity-25 pointer-events-none transform -rotate-45 z-0">
@@ -63,6 +61,7 @@
             <img src="disco.png" alt="Disco" class="absolute -top-8 -left-6 w-24 md:w-28 pointer-events-none z-20 drop-shadow-lg float-disco-alt">
             <div class="relative z-10 mt-4">
                 <p class="text-sm md:text-base font-semibold uppercase tracking-[0.3em] color-olive mb-4">Mis XV Maju</p>
+                <!-- Saludo Dinámico -->
                 <h1 id="envelope-greeting" class="font-script text-6xl md:text-7xl color-fuchsia mb-10 leading-tight">Hola...</h1>
                 <button class="bg-olive text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse shadow-lg" onclick="abrirSobre(); event.stopPropagation();">Abrir Invitación</button>
             </div>
@@ -71,7 +70,6 @@
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <!-- SECCIÓN 1: INICIO -->
     <section id="evento" class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative pb-10 bg-[#FDFBF7] overflow-hidden">
         
         <div class="glass-panel relative px-6 py-12 md:px-10 md:py-16 rounded-none max-w-xl w-full mt-10 z-10">
@@ -81,7 +79,6 @@
             <img src="disco.png" alt="Disco" class="absolute -top-12 -right-8 w-24 md:w-32 pointer-events-none z-20 drop-shadow-md float-disco">
 
             <div class="relative z-30 mt-8">
-                <!-- Se ajustó el margen superior e inferior para evitar cruces de texto -->
                 <p class="text-[12px] md:text-[14px] uppercase tracking-[0.3em] text-[#9CA83D] font-extrabold relative z-30 mb-10 mt-4">Birthday XV Party</p>
                 
                 <h1 class="font-script text-[95px] md:text-[120px] color-fuchsia leading-[0.7] mb-0 drop-shadow-sm relative z-20">Maju</h1>
@@ -90,6 +87,7 @@
                 
                 <div class="w-20 h-[1.5px] bg-[#9CA83D] mx-auto mb-5 opacity-60"></div>
                 
+                <!-- Saludo Hero Dinámico -->
                 <p id="hero-greeting" class="text-[1.05rem] md:text-lg italic text-gray-700 leading-snug px-2 mb-5 font-medium max-w-xs md:max-w-sm mx-auto">
                     ¡Hola! Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial.
                 </p>
@@ -115,7 +113,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: CUENTA REGRESIVA -->
+    <!-- SECCIÓN 2: CUENTA REGRESIVA (FUNCIONAL) -->
     <section class="py-12 px-6 text-center bg-soft-pink">
         <h2 class="text-4xl md:text-5xl italic mb-6 text-white font-script">Falta poco</h2>
         <div class="glass-panel-dark p-6 rounded-2xl inline-block border border-white/40">
@@ -128,7 +126,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: UBICACIÓN -->
     <section class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[13px] color-olive font-bold mb-2">Dónde</p>
         <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: #EA657A;">Urb. Santa Sofía B-8</h2>
@@ -138,7 +135,6 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: DRESS CODE -->
     <section id="vestimenta" class="py-20 px-6 text-center bg-olive text-white relative overflow-hidden">
         <p class="uppercase tracking-[0.3em] text-[13px] text-white/90 font-bold mb-3">Código de Vestimenta</p>
         <h2 class="text-5xl font-bold mb-8 text-white">Cocktail</h2>
@@ -158,11 +154,13 @@
         <p class="mt-8 text-base max-w-md mx-auto text-white/90 border-t border-white/30 pt-6 font-medium">Prendas de color entero, sin glitter, lentejuelas ni brillos.<br>Caballeros: terno.</p>
     </section>
 
-    <!-- SECCIÓN 5: GENERACIÓN DE PASES -->
+    <!-- SECCIÓN DE PASES (Oculta la sección de Regalo y Banco como lo pediste) -->
     <section id="rsvp" class="py-20 px-6 text-center bg-[#FDFBF7]">
         <p class="uppercase tracking-widest text-[10px] text-gray-500 mb-2">Acceso</p>
         <h2 class="text-4xl font-semibold mb-6 text-[#9CA83D]">Tus Pases VIP</h2>
         <div class="glass-panel p-6 md:p-8 rounded-3xl max-w-lg mx-auto shadow-sm">
+            
+            <!-- PASO 1 -->
             <div id="step-1">
                 <h3 id="familia-title" class="text-3xl mb-2 font-script color-fuchsia">Cargando tus pases...</h3>
                 <p id="instrucciones-registro" class="text-sm mb-6 text-gray-600 hidden">
@@ -174,6 +172,7 @@
                 <button id="btn-confirmar" onclick="confirmarYGenerar()" class="w-full bg-[#9CA83D] text-white py-3 rounded-full uppercase tracking-widest text-xs font-semibold hover:bg-[#8CA38D] transition shadow-md hidden">Generar Pases</button>
             </div>
             
+            <!-- PASO 2: LOS TICKETS -->
             <div id="step-2" class="hidden-step text-center">
                 <h3 class="text-3xl font-script color-fuchsia mb-2">¡Pases Generados!</h3>
                 <p class="text-sm mb-8 text-gray-600">Descarga y presenta cada pase en la puerta del evento.</p>
@@ -182,47 +181,10 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 6: UN DETALLE CON CARIÑO (REGALOS Y CUENTAS BANCARIAS) - SE OCULTA SI ES AMIGO -->
-    <section id="seccion-cuentas" class="py-20 px-6 text-center bg-[#FDFBF7] relative overflow-hidden border-t border-[#9CA83D]/20 hidden">
-        <div class="relative z-10 max-w-lg mx-auto">
-            <h2 class="text-6xl font-script mb-2 text-[#2E3B32]">Gracias</h2>
-            <p class="uppercase tracking-widest text-[10px] text-[#9CA83D] font-bold mb-8">Un detalle con cariño</p>
-            <div class="glass-panel p-8 md:p-10 rounded-[2rem] shadow-md border-[3px] border-[#9CA83D] bg-[#FDFBF7]/90">
-                <p class="text-sm mb-8 text-gray-700 leading-relaxed italic">Tu presencia es lo más importante para mí. Si deseas tener un detalle especial por mis 15 años, puedes hacerlo a través de la siguiente cuenta bancaria.</p>
-                <div class="space-y-5">
-                    <div>
-                        <p class="font-bold text-lg text-[#2E3B32] mb-1">BCP &middot; SOLES</p>
-                        <p class="text-sm text-gray-600 font-medium">Sandra Valderrama Cornejo</p>
-                    </div>
-                    <div class="bg-white/60 p-4 rounded-xl border border-[#9CA83D]/30">
-                        <p class="text-[10px] uppercase tracking-widest text-[#9CA83D] font-bold mb-1">N.º de cuenta</p>
-                        <p class="text-lg font-semibold text-gray-800 tracking-wider">21570788443072</p>
-                    </div>
-                    <div class="bg-white/60 p-4 rounded-xl border border-[#9CA83D]/30">
-                        <p class="text-[10px] uppercase tracking-widest text-[#9CA83D] font-bold mb-1">CCI</p>
-                        <p class="text-lg font-semibold text-gray-800 tracking-wider">00221517078844307228</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 7: REGALOS (SOLO PARA AMIGOS) - SE MUESTRA SI ES AMIGO -->
-    <section id="seccion-regalos-amigos" class="py-20 px-6 text-center bg-[#FDFBF7] border-b border-[#EA657A]/10 hidden">
-        <img src="regalo.png" alt="Regalo" class="w-20 md:w-24 mx-auto mb-6 bounce-gift opacity-90 drop-shadow-sm">
-        <p class="uppercase tracking-[0.3em] text-[13px] color-tangerine font-bold mb-3">Un detalle especial</p>
-        <h2 class="text-6xl font-script mb-8" style="color: #EA657A;">Regalos</h2>
-        <div class="glass-panel p-10 rounded-[2rem] max-w-xl mx-auto shadow-md border-[2px] border-[#FF9B3D]/30" style="background:#FDFBF7;">
-            <p class="text-gray-700 font-bold text-[1.2rem] md:text-xl leading-relaxed italic">
-                "Tu presencia es lo más importante para mí. Si deseas tener un detalle especial para mis 15 años puedes hacerlo teniendo en cuenta que amo lo creativo!"
-            </p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 8: INTERACTIVOS (PLAYLIST Y FOTOS) -->
+    <!-- SECCIÓN INTERACTIVA (FUNCIONAL) -->
     <section class="py-16 w-full bg-[#9CA83D]">
         <div class="px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 h-auto md:h-[550px]">
-            <!-- Playlist -->
+            
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Playlist</p>
                 <h2 class="text-4xl mb-4 font-script text-white">La música</h2>
@@ -235,7 +197,6 @@
                 </div>
             </div>
             
-            <!-- Galería de Fotos -->
             <div class="glass-panel-dark p-6 md:p-8 rounded-3xl text-center flex flex-col h-[500px] md:h-full overflow-hidden">
                 <p class="uppercase tracking-widest text-xs text-white/80 mb-2">Álbum colaborativo</p>
                 <h2 class="text-4xl mb-4 font-script text-white">Galería de Fotos</h2>
@@ -255,7 +216,7 @@
         <p>Maju Isabella &bull; Sábado, 7 de noviembre de 2026</p>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT -->
+    <!-- LÓGICA JAVASCRIPT COMPLETAMENTE RESTAURADA -->
     <script>
         function createPetals() { 
             const container = document.getElementById('petals-container'); 
@@ -276,6 +237,7 @@
         } 
         createSparkles();
 
+        // TIMER RESTAURADO
         const eventDate = new Date('Nov 7, 2026 19:30:00').getTime(); 
         setInterval(() => { 
             const now = new Date().getTime(); const distance = eventDate - now; 
@@ -285,35 +247,7 @@
             document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'); 
         }, 1000);
 
-        // URL DEL SCRIPT
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const familiaId = urlParams.get('id') || '';
-        const tipo = urlParams.get('tipo');
-
-        // Lógica de Mostrar u Ocultar Regalos/Cuenta según el tipo (Amigo vs Familiar)
-        document.addEventListener("DOMContentLoaded", function() {
-            const seccionCuentas = document.getElementById('seccion-cuentas');
-            const seccionRegalos = document.getElementById('seccion-regalos-amigos');
-
-            if (tipo === 'amigo') {
-                if (seccionCuentas) seccionCuentas.style.display = 'none';
-                if (seccionRegalos) seccionRegalos.style.display = 'block';
-            } else {
-                if (seccionCuentas) seccionCuentas.style.display = 'block';
-                if (seccionRegalos) seccionRegalos.style.display = 'none';
-            }
-        });
-
-        let familyMembers = [];
-        let nombreUsuario = ""; 
-        const formatName = (str) => {
-            if(!str) return "";
-            return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
-        };
-
-        // FUNCIÓN ABRIR SOBRE (Infalible, aplicada directo al onclick)
+        // FUNCIONES ABRIR SOBRE Y AUDIO
         function abrirSobre() {
             const sobre = document.getElementById('envelope-screen');
             const audio = document.getElementById('bg-music');
@@ -323,34 +257,53 @@
             setTimeout(() => { sobre.style.display = 'none'; }, 1000);
         }
 
-        // CARGA DE DATOS DESDE APPS SCRIPT
+        // ==========================================
+        // URL DEL SCRIPT (¡AQUÍ VA TU URL REAL!)
+        // ==========================================
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHbqAhbTvZcsISBmPB4bw7xthAzhw4T9Fyz4bzO3acgKRN8a0kC85CMGDvJL8b1-8sYw/exec';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const familiaId = urlParams.get('id') || '';
+        
+        let familyMembers = [];
+        let nombreUsuario = ""; 
+        const formatName = (str) => {
+            if(!str) return "";
+            return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.substring(1)).join(' ');
+        };
+
+        // CARGAR BASE DE DATOS Y DETERMINAR NOMBRE INTELIGENTE
         document.addEventListener("DOMContentLoaded", () => {
             cargarDatosInteractivos();
+            
             if(!familiaId) {
                 document.getElementById('lista-invitados').innerHTML = '<p class="text-center text-red-500">Error: El enlace está incompleto.</p>';
                 document.getElementById('envelope-greeting').innerText = 'Hola';
                 return;
             }
+            
             fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'getFamily', familia: familiaId }) })
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.miembros.length > 0) {
                     familyMembers = data.miembros;
                     
+                    // --- LÓGICA DE NOMBRE: INDIVIDUAL O FAMILIA ---
                     if (familyMembers.length === 1) {
                         let primerNombre = familyMembers[0].nombre.split(' ')[0];
                         nombreUsuario = formatName(primerNombre);
                         
                         document.getElementById('envelope-greeting').innerText = 'Hola\n' + nombreUsuario;
-                        document.getElementById('hero-greeting').innerText = '¡Hola ' + nombreUsuario + '!';
+                        document.getElementById('hero-greeting').innerText = '¡Hola ' + nombreUsuario + '! Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial.';
                         document.getElementById('familia-title').innerText = 'Hola ' + nombreUsuario;
                     } else {
                         nombreUsuario = "Fam. " + formatName(familiaId);
                         
                         document.getElementById('envelope-greeting').innerText = 'Hola Familia\n' + formatName(familiaId);
-                        document.getElementById('hero-greeting').innerText = '¡Hola Familia ' + formatName(familiaId) + '!';
+                        document.getElementById('hero-greeting').innerText = '¡Hola Familia ' + formatName(familiaId) + '! Hoy celebramos la alegría, la esencia y los sueños de una etapa inolvidable. Te esperamos para acompañar a Maju Isabella en una noche muy especial.';
                         document.getElementById('familia-title').innerText = 'Hola Familia ' + formatName(familiaId);
                     }
+                    
                     document.getElementById('instrucciones-registro').classList.remove('hidden');
                     document.getElementById('btn-confirmar').classList.remove('hidden');
                     let html = '';
@@ -368,6 +321,7 @@
             });
         });
 
+        // ------------------ INTERACTIVOS RESTAURADOS ------------------
         function cargarDatosInteractivos() {
             fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPlaylist' }) })
             .then(res => res.json())
@@ -377,6 +331,7 @@
                     container.innerHTML = data.songs.map(s => `<div class="bg-white/95 p-3 rounded-xl border border-white/50 flex items-center justify-between shadow-sm"><div class="w-full"><p class="text-sm font-semibold text-gray-800 break-words">${s.cancion}</p><p class="text-[10px] uppercase tracking-widest text-[#9CA83D] mt-1">Pedida por: ${s.familia}</p></div><span class="text-xl">🎵</span></div>`).join('');
                 } else { container.innerHTML = '<p class="text-center italic text-white/70 text-sm mt-10">Aún no hay canciones.<br>¡Sé el primero en pedir una!</p>'; }
             });
+
             fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPhotos' }) })
             .then(res => res.json())
             .then(data => {
@@ -450,6 +405,7 @@
             });
             fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'confirm', confirmaciones: payloadConfirmaciones }) });
         }
+
         function descargarTicket(ticketID, btnElement, nombre) {
             const originalText = btnElement.innerText; btnElement.innerText = "⏳ GENERANDO PASE...";
             htmlToImage.toPng(document.getElementById(ticketID), { pixelRatio: 3, backgroundColor: '#FDFBF7', style: { margin: '0' } })
